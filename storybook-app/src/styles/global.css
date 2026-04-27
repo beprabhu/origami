@@ -14,7 +14,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--zd-surface);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
   font-family: var(--zd-font-sans);
   font-size: var(--zd-b14-size);
   line-height: var(--zd-b14-lh);

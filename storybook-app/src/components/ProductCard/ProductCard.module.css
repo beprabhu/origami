@@ -11,8 +11,8 @@
 .header {
   position: relative;
   width: 100%;
-  background: var(--zd-grey-50);
-  border: 0.5px solid var(--zd-border);
+  background: var(--zd-surface-secondary);
+  border: 0.5px solid var(--zd-border-default);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -42,7 +42,7 @@
   align-items: flex-end;
   justify-content: space-between;
   padding: 6px;
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
   font-size: var(--zd-b10-size);
   line-height: var(--zd-b10-lh);
 }
@@ -63,9 +63,9 @@
   display: inline-flex;
   align-items: center;
   padding: 2px 4px;
-  border: 0.5px solid var(--zd-orange-100);
-  background: var(--zd-orange-50);
-  color: var(--zd-orange-800);
+  border: 0.5px solid var(--zd-border-warning-subtle);
+  background: var(--zd-surface-warning-subtle);
+  color: var(--zd-text-warning-bold);
   border-radius: 6px 1px 4px 1px;
   font-size: var(--zd-b8-size);
   font-weight: var(--zd-fw-medium);
@@ -154,8 +154,8 @@
   position: relative;
   display: inline-flex;
   align-items: baseline;
-  background: var(--zd-green-800);
-  color: var(--zd-white);
+  background: var(--zd-surface-super-saver);
+  color: var(--zd-text-on-surface-bold);
   border: 0.5px solid var(--zd-grass-800);
   box-shadow: 1.5px 1.5px 0 0 var(--zd-grass-800);
   padding: 4px 6px 2px;
@@ -189,7 +189,7 @@
   font-size: var(--zd-b10-size);
   line-height: var(--zd-b10-lh);
   font-weight: var(--zd-fw-bold);
-  color: var(--zd-text-success);
+  color: var(--zd-text-success-bold);
 }
 .savings .divider {
   flex: 1;
@@ -202,7 +202,7 @@
   font-size: var(--zd-b12-size);
   line-height: 14px;
   font-weight: var(--zd-fw-medium);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -229,7 +229,7 @@
   font-size: var(--zd-b10-size);
   line-height: var(--zd-b10-lh);
   font-weight: var(--zd-fw-demi);
-  color: var(--zd-grey-600);
+  color: var(--zd-text-primary-subtle);
   white-space: nowrap;
 }
 
@@ -238,13 +238,13 @@
   align-items: center;
   gap: 2px;
   padding: 1px 6px 1px 2px;
-  background: linear-gradient(to right, var(--zd-green-50), rgba(255, 255, 255, 0.16));
+  background: linear-gradient(to right, var(--zd-surface-success-subtle), var(--zd-alpha-white-16));
   border-radius: 20px 0 0 20px;
 }
 .rating .ratingValue {
   font-size: var(--zd-b10-size);
   line-height: var(--zd-b10-lh);
-  color: var(--zd-text-success);
+  color: var(--zd-text-success-bold);
   font-weight: var(--zd-fw-medium);
 }
 .rating .ratingCount {

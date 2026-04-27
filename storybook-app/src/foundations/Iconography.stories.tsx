@@ -60,7 +60,7 @@ const cell: React.CSSProperties = {
   gap: 8,
   padding: '12px 6px',
   borderRadius: 8,
-  color: 'var(--zd-text)',
+  color: 'var(--zd-text-primary)',
 };
 
 const cellLabel: React.CSSProperties = {
@@ -171,7 +171,7 @@ export const Sizes: Story = {
     },
   },
   render: () => (
-    <div style={{ padding: 24, background: '#fff', display: 'flex', alignItems: 'center', gap: 32, color: 'var(--zd-text)' }}>
+    <div style={{ padding: 24, background: '#fff', display: 'flex', alignItems: 'center', gap: 32, color: 'var(--zd-text-primary)' }}>
       {[12, 14, 16, 18, 20, 24, 32, 48].map((s) => (
         <div key={s} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
           <Icon name="shopping-cart" size={s} />
@@ -196,12 +196,12 @@ export const ColorInheritance: Story = {
   render: () => (
     <div style={{ padding: 24, background: '#fff', display: 'flex', gap: 24 }}>
       {[
-        { color: 'var(--zd-text)', label: 'text' },
+        { color: 'var(--zd-text-primary)', label: 'text' },
         { color: 'var(--zd-text-secondary)', label: 'text-secondary' },
         { color: 'var(--zd-brand)', label: 'brand' },
-        { color: 'var(--zd-text-success)', label: 'text-success' },
-        { color: 'var(--zd-text-warning)', label: 'text-warning' },
-        { color: 'var(--zd-text-error)', label: 'text-error' },
+        { color: 'var(--zd-text-success-bold)', label: 'text-success' },
+        { color: 'var(--zd-text-warning-bold)', label: 'text-warning' },
+        { color: 'var(--zd-text-error-bold)', label: 'text-error' },
       ].map(({ color, label }) => (
         <div key={label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, color }}>
           <Icon name="lightning" weight="fill" size={28} />

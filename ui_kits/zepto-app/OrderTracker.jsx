@@ -48,7 +48,7 @@ function OrderTracker({ onDone, onClose }) {
                   )}
                 </div>
                 <div style={{ paddingTop: 2, paddingBottom: i === stages.length - 1 ? 0 : 4 }}>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: active || done ? 'var(--zd-text)' : 'var(--zd-text-tertiary)' }}>{st.label}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: active || done ? 'var(--zd-text-primary)' : 'var(--zd-text-tertiary)' }}>{st.label}</div>
                   <div style={{ fontSize: 11, color: 'var(--zd-text-secondary)' }}>{st.sub}</div>
                 </div>
               </div>
@@ -58,7 +58,7 @@ function OrderTracker({ onDone, onClose }) {
         <button onClick={onDone} style={{
           marginTop: 16, width: '100%', height: 48, background: '#fff',
           border: '1px solid var(--zd-border)', borderRadius: 12,
-          color: 'var(--zd-text)', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, cursor: 'pointer',
+          color: 'var(--zd-text-primary)', fontFamily: 'inherit', fontSize: 14, fontWeight: 600, cursor: 'pointer',
         }}>Back to home</button>
       </div>
     </div>

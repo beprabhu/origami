@@ -156,121 +156,261 @@
 
   /* Yellow — caution / promo accents */
   --zd-yellow-50:  #fef9eb;
+  --zd-yellow-100: #fcf1cb;
+  --zd-yellow-200: #fbe7ab;
+  --zd-yellow-300: #f9de8d;
+  --zd-yellow-400: #f8d168;
   --zd-yellow-500: #f5b942;
   --zd-yellow-600: #eea82f;
   --zd-yellow-700: #e28f12;
+  --zd-yellow-800: #bd6c0f;
+  --zd-yellow-900: #8e480b;
 
   /* Red — error, critical */
   --zd-red-50:  #ffebeb;
   --zd-red-100: #fececd;
+  --zd-red-200: #fc9e9d;
   --zd-red-300: #f87d7b;
+  --zd-red-400: #f65c5a;
   --zd-red-500: #f43936;
   --zd-red-600: #ed2724;  /* error bold */
   --zd-red-700: #da1512;
+  --zd-red-800: #ba0805;
   --zd-red-900: #8e0604;
 
   /* Blue — highlight / informational */
   --zd-blue-50:  #ebf4ff;
   --zd-blue-100: #cde5fe;
+  --zd-blue-200: #aad2fd;
+  --zd-blue-300: #7fb9f8;
+  --zd-blue-400: #64abf7;
   --zd-blue-500: #3d96f5;
   --zd-blue-600: #1681f3;
   --zd-blue-700: #0b6dd5;
+  --zd-blue-800: #0955a7;
+  --zd-blue-900: #074282;
 
   /* Teal — accent (used in Zepto Cafe / fresh / explore strips) */
   --zd-teal-50:  #edfafb;
   --zd-teal-100: #d9f3f6;
+  --zd-teal-200: #c3ecf0;
+  --zd-teal-300: #a1e1e8;
+  --zd-teal-400: #85d7e0;
   --zd-teal-500: #6ccfda;
+  --zd-teal-600: #43c0d0;
   --zd-teal-700: #2da3b4;
+  --zd-teal-800: #258693;
   --zd-teal-900: #177582;
 
   /* Indigo — experiment surfaces (e.g. promo badges) */
   --zd-indigo-50:  #f3ebff;
+  --zd-indigo-100: #e1cdfe;
+  --zd-indigo-200: #ccaff8;
+  --zd-indigo-300: #b287f2;
+  --zd-indigo-400: #a06cef;
   --zd-indigo-500: #8947eb;
   --zd-indigo-600: #7224e7;
+  --zd-indigo-700: #5a15c1;
+  --zd-indigo-800: #4b12a1;
+  --zd-indigo-900: #3a0e7c;
 
-  /* Alpha overlays */
+  /* Orange — fill missing rungs */
+  /* (50–700 declared above) */
+  /* Already complete; rungs 800/900 below */
+
+  /* Alpha overlays — full ramp */
   --zd-alpha-dark-4:  #0b0c0e0a;
   --zd-alpha-dark-8:  #0b0c0e14;
   --zd-alpha-dark-16: #0b0c0e29;
   --zd-alpha-dark-25: #0b0c0e40;
   --zd-alpha-dark-40: #0b0c0e66;
+  --zd-alpha-dark-50: #0b0c0e80;
   --zd-alpha-dark-60: #0b0c0e99;
   --zd-alpha-dark-75: #0b0c0ebf;
+  --zd-alpha-dark-90: #0b0c0ee6;
+  --zd-alpha-white-4:  #ffffff0a;
+  --zd-alpha-white-8:  #ffffff14;
   --zd-alpha-white-16: #ffffff29;
   --zd-alpha-white-25: #ffffff40;
+  --zd-alpha-white-40: #ffffff66;
   --zd-alpha-white-50: #ffffff80;
+  --zd-alpha-white-60: #ffffff99;
   --zd-alpha-white-75: #ffffffbf;
   --zd-alpha-white-90: #ffffffe6;
 
   /* ============================================================
    * SEMANTIC COLOR TOKENS (light theme)
-   * Names map to Zesto / Figma `2-Semantics Light.json`.
-   * Always prefer these over base ramps in product UI.
+   * 1:1 mapping of `semantic.color.*` → `base.color.*` from
+   * 2-Semantics Light.json + 1-Base Value.json. Do not invent
+   * new aliases here; if you need a new alias, add it to the JSON
+   * source first.
    * ============================================================ */
 
-  /* — Brand */
-  --zd-brand:                var(--zd-pink-600);
-  --zd-brand-hover:          var(--zd-pink-700);
-  --zd-brand-pressed:        var(--zd-pink-700);
-  --zd-brand-subtle:         var(--zd-pink-50);
-  --zd-brand-on:             var(--zd-white);
-
-  --zd-brand-primary:        var(--zd-purple-700); /* Zepto Pass / premium */
-  --zd-brand-primary-bg:     var(--zd-purple-600);
-  --zd-brand-primary-subtle: var(--zd-purple-50);
-
   /* — Text */
-  --zd-text:                 var(--zd-grey-900);
-  --zd-text-secondary:       var(--zd-grey-500);
-  --zd-text-tertiary:        var(--zd-grey-400);
-  --zd-text-disabled:        var(--zd-grey-400);
-  --zd-text-on-bold:         var(--zd-white);
-  --zd-text-on-subtle:       var(--zd-alpha-white-75);
-  --zd-text-success:         var(--zd-green-800);   /* "₹26 saved" */
-  --zd-text-warning:         var(--zd-orange-700);
-  --zd-text-error:           var(--zd-red-600);
-  --zd-text-highlight:       var(--zd-blue-700);
-  --zd-text-accent:          var(--zd-teal-900);
-  --zd-text-super-saver:     var(--zd-green-800);
+  --zd-text-primary:                 var(--zd-grey-900);
+  --zd-text-primary-subtle:          var(--zd-grey-600);
+  --zd-text-secondary:               var(--zd-grey-500);
+  --zd-text-tertiary:                var(--zd-grey-400);
+  --zd-text-disabled:                var(--zd-grey-400);
+  --zd-text-disabled-light:          var(--zd-grey-300);
+  --zd-text-muted:                   var(--zd-grey-400);
+  --zd-text-light:                   var(--zd-grey-200);
+  --zd-text-on-surface-bold:         var(--zd-white);
+  --zd-text-on-surface-subtle:       var(--zd-alpha-white-75);
+  --zd-text-brand-primary:           var(--zd-purple-700);
+  --zd-text-brand-primary-subtle:    var(--zd-purple-50);
+  --zd-text-brand-secondary:         var(--zd-pink-600);
+  --zd-text-brand-secondary-subtle:  var(--zd-pink-50);
+  --zd-text-success-bold:            var(--zd-green-800);
+  --zd-text-success-subtle:          var(--zd-green-50);
+  --zd-text-success-inverted:        var(--zd-green-400);
+  --zd-text-warning-bold:            var(--zd-orange-700);
+  --zd-text-warning-subtle:          var(--zd-orange-50);
+  --zd-text-error-bold:              var(--zd-red-600);
+  --zd-text-error-subtle:            var(--zd-red-50);
+  --zd-text-highlight-bold:          var(--zd-blue-700);
+  --zd-text-highlight-subtle:        var(--zd-blue-50);
+  --zd-text-accent-bold:             var(--zd-teal-900);
+  --zd-text-accent-subtle:           var(--zd-teal-50);
+  --zd-text-super-saver:             var(--zd-green-800);
+  --zd-text-success-bold-fashion:    var(--zd-green-800);
+  --zd-text-neutral-success:         var(--zd-green-800);
+  --zd-text-neutral-primary:         var(--zd-grey-900);
+  --zd-text-neutral-secondary:       var(--zd-grey-500);
+  --zd-text-neutral-tertiary:        var(--zd-grey-400);
 
   /* — Surface */
-  --zd-surface:              var(--zd-white);
-  --zd-surface-muted:        var(--zd-grey-50);
-  --zd-surface-tertiary:     var(--zd-grey-100);
-  --zd-surface-dark:         var(--zd-grey-900);
-  --zd-surface-brand:        var(--zd-pink-600);
-  --zd-surface-brand-subtle: var(--zd-pink-50);
-  --zd-surface-success:      var(--zd-green-700);
-  --zd-surface-success-subtle: var(--zd-green-50);
-  --zd-surface-warning:      var(--zd-orange-600);
-  --zd-surface-warning-subtle: var(--zd-orange-50);
-  --zd-surface-error:        var(--zd-red-600);
-  --zd-surface-error-subtle: var(--zd-red-50);
-  --zd-surface-overlay:      var(--zd-alpha-dark-60);
+  --zd-surface-primary:                var(--zd-white);
+  --zd-surface-secondary:              var(--zd-grey-50);
+  --zd-surface-tertiary:               var(--zd-grey-100);
+  --zd-surface-tertiary-dark:          var(--zd-grey-700);
+  --zd-surface-secondary-dark:         var(--zd-grey-800);
+  --zd-surface-primary-dark:           var(--zd-grey-900);
+  --zd-surface-brand-primary:          var(--zd-purple-600);
+  --zd-surface-brand-primary-bold:     var(--zd-purple-600);
+  --zd-surface-brand-primary-semi-bold: var(--zd-purple-500);
+  --zd-surface-brand-primary-medium:   var(--zd-purple-300);
+  --zd-surface-brand-primary-light:    var(--zd-purple-100);
+  --zd-surface-brand-primary-subtle:   var(--zd-purple-50);
+  --zd-surface-brand-secondary-bold:   var(--zd-pink-600);
+  --zd-surface-brand-secondary-extrabold: var(--zd-pink-800);
+  --zd-surface-brand-secondary-medium: var(--zd-pink-200);
+  --zd-surface-brand-secondary-subtle: var(--zd-pink-50);
+  --zd-surface-success-extra-bold:     var(--zd-green-800);
+  --zd-surface-success-bold:           var(--zd-green-700);
+  --zd-surface-success-semi-bold:      var(--zd-green-400);
+  --zd-surface-success-medium:         var(--zd-green-300);
+  --zd-surface-success-light:          var(--zd-green-100);
+  --zd-surface-success-subtle:         var(--zd-green-50);
+  --zd-surface-warning-bold:           var(--zd-orange-600);
+  --zd-surface-warning-subtle:         var(--zd-orange-50);
+  --zd-surface-error-bold:             var(--zd-red-600);
+  --zd-surface-error-subtle:           var(--zd-red-50);
+  --zd-surface-highlight-bold:         var(--zd-blue-600);
+  --zd-surface-highlight-subtle:       var(--zd-blue-50);
+  --zd-surface-accent-bold:            var(--zd-teal-700);
+  --zd-surface-accent-subtle:          var(--zd-teal-50);
+  --zd-surface-overlay-dark-bold:      var(--zd-alpha-dark-60);
+  --zd-surface-overlay-dark-subtle:    var(--zd-alpha-dark-8);
+  --zd-surface-overlay-dark-opaque:    var(--zd-alpha-dark-4);
+  --zd-surface-overlay-white-bold:     var(--zd-alpha-white-75);
+  --zd-surface-overlay-white-medium:   var(--zd-alpha-white-25);
+  --zd-surface-overlay-white-subtle:   var(--zd-alpha-white-16);
+  --zd-surface-disabled-default:       var(--zd-grey-300);
+  --zd-surface-super-saver:            var(--zd-green-800);
+  --zd-surface-super-saver-medium:     var(--zd-green-200);
+  --zd-surface-neutral-success-subtle: var(--zd-green-50);
+  --zd-surface-success-subtle-fashion: var(--zd-green-50);
+  --zd-surface-success-bold-fashion:   var(--zd-green-700);
 
   /* — Border */
-  --zd-border:               var(--zd-grey-200);
-  --zd-border-medium:        var(--zd-grey-300);
-  --zd-border-bold:          var(--zd-grey-500);
-  --zd-border-brand:         var(--zd-pink-600);
-  --zd-border-brand-subtle:  var(--zd-pink-100);
-  --zd-border-success:       var(--zd-green-700);
-  --zd-border-error:         var(--zd-red-600);
+  --zd-border-white:                  var(--zd-white);
+  --zd-border-default:                var(--zd-grey-200);
+  --zd-border-medium:                 var(--zd-grey-300);
+  --zd-border-semi-bold:              var(--zd-grey-400);
+  --zd-border-bold:                   var(--zd-grey-500);
+  --zd-border-extra-bold:             var(--zd-grey-600);
+  --zd-border-dark:                   var(--zd-grey-800);
+  --zd-border-extra-dark:             var(--zd-grey-900);
+  --zd-border-brand-primary-bold:     var(--zd-purple-600);
+  --zd-border-brand-primary-subtle:   var(--zd-purple-100);
+  --zd-border-brand-secondary-bold:   var(--zd-pink-600);
+  --zd-border-brand-secondary-subtle: var(--zd-pink-100);
+  --zd-border-success-bold:           var(--zd-green-700);
+  --zd-border-success-semi-bold:      var(--zd-green-500);
+  --zd-border-success-medium:         var(--zd-green-300);
+  --zd-border-success-subtle:         var(--zd-green-100);
+  --zd-border-warning-subtle:         var(--zd-orange-100);
+  --zd-border-error-subtle:           var(--zd-red-100);
+  --zd-border-highlight-subtle:       var(--zd-blue-100);
+  --zd-border-accent-bold:            var(--zd-teal-700);
+  --zd-border-accent-subtle:          var(--zd-teal-50);
+  --zd-border-overlay-dark:           var(--zd-alpha-dark-16);
+  --zd-border-overlay-white:          var(--zd-alpha-white-8);
+  --zd-border-super-saver:            var(--zd-green-800);
 
   /* — Icons */
-  --zd-icon:                 var(--zd-grey-900);
-  --zd-icon-secondary:       var(--zd-grey-500);
-  --zd-icon-disabled:        var(--zd-grey-400);
-  --zd-icon-brand:           var(--zd-pink-600);
-  --zd-icon-on-bold:         var(--zd-white);
+  --zd-icon-primary:                  var(--zd-grey-900);
+  --zd-icon-secondary:                var(--zd-grey-500);
+  --zd-icon-on-surface-bold:          var(--zd-white);
+  --zd-icon-on-surface-subtle:        var(--zd-alpha-white-75);
+  --zd-icon-brand-primary:            var(--zd-purple-700);
+  --zd-icon-brand-secondary:          var(--zd-pink-600);
+  --zd-icon-success-bold:             var(--zd-green-800);
+  --zd-icon-warning-bold:             var(--zd-orange-700);
+  --zd-icon-error-bold:               var(--zd-red-600);
+  --zd-icon-highlight-bold:           var(--zd-blue-600);
+  --zd-icon-accent-bold:              var(--zd-teal-900);
+  --zd-icon-disabled:                 var(--zd-grey-400);
+  --zd-icon-super-saver:              var(--zd-green-800);
+  --zd-icon-neutral-success:          var(--zd-green-800);
 
-  /* — Sub-brand: Zepto Pass / Royale */
+  /* ============================================================
+   * LEGACY/CONVENIENCE ALIASES — kept stable so component CSS
+   * and existing previews don't churn. Each maps to a canonical
+   * semantic token above.
+   * ============================================================ */
+  --zd-brand:                var(--zd-surface-brand-secondary-bold);
+  --zd-brand-hover:          var(--zd-pink-700);
+  --zd-brand-pressed:        var(--zd-pink-700);
+  --zd-brand-subtle:         var(--zd-surface-brand-secondary-subtle);
+  --zd-brand-on:             var(--zd-text-on-surface-bold);
+
+  --zd-error-hover:          var(--zd-red-700);
+  --zd-error-pressed:        var(--zd-red-800);
+
+  --zd-brand-primary:        var(--zd-text-brand-primary);
+  --zd-brand-primary-bg:     var(--zd-surface-brand-primary);
+  --zd-brand-primary-subtle: var(--zd-surface-brand-primary-subtle);
+
+  --zd-surface:              var(--zd-surface-primary);
+  --zd-surface-muted:        var(--zd-surface-secondary);
+  --zd-surface-dark:         var(--zd-surface-primary-dark);
+  --zd-surface-brand:        var(--zd-surface-brand-secondary-bold);
+  --zd-surface-brand-subtle: var(--zd-surface-brand-secondary-subtle);
+  --zd-surface-success:      var(--zd-surface-success-bold);
+  --zd-surface-warning:      var(--zd-surface-warning-bold);
+  --zd-surface-error:        var(--zd-surface-error-bold);
+  --zd-surface-overlay:      var(--zd-surface-overlay-dark-bold);
+
+  --zd-border:               var(--zd-border-default);
+  --zd-border-brand:         var(--zd-border-brand-secondary-bold);
+  --zd-border-brand-subtle:  var(--zd-border-brand-secondary-subtle);
+  --zd-border-success:       var(--zd-border-success-bold);
+  --zd-border-error:         var(--zd-surface-error-bold);
+
+  --zd-icon:                 var(--zd-icon-primary);
+  --zd-icon-brand:           var(--zd-icon-brand-secondary);
+  --zd-icon-on-bold:         var(--zd-icon-on-surface-bold);
+
+  /* — Sub-brand: Zepto Pass / Royale (NOT in canonical JSON; kept
+       for product chrome until added upstream) */
   --zd-pass-bg:              var(--zd-royale-800);
   --zd-pass-bg-deep:         var(--zd-royale-900);
   --zd-pass-text:            var(--zd-royale-100);
   --zd-pass-accent:          var(--zd-purple-300);
 
-  /* — Sub-brand: Daily Pass */
+  /* — Sub-brand: Daily Pass (NOT in canonical JSON) */
   --zd-daily-bg:             var(--zd-grass-900);
   --zd-daily-accent:         var(--zd-lime-500);
   --zd-daily-text:           var(--zd-lime-100);
@@ -375,7 +515,7 @@
   --zd-btn-h-xs:  28px;  --zd-btn-px-xs:  10px;  --zd-btn-r-xs:  var(--zd-radius-sm);
   --zd-btn-h-sm:  32px;  --zd-btn-px-sm:  12px;  --zd-btn-r-sm:  var(--zd-radius-md);
   --zd-btn-h-md:  40px;  --zd-btn-px-md:  14px;  --zd-btn-r-md:  var(--zd-radius-md);
-  --zd-btn-h-lg:  48px;  --zd-btn-px-lg:  16px;  --zd-btn-r-lg:  var(--zd-radius-lg);
+  --zd-btn-h-lg:  48px;  --zd-btn-px-lg:  16px;  --zd-btn-r-lg:  10px;
   --zd-btn-h-xl:  56px;  --zd-btn-px-xl:  20px;  --zd-btn-r-xl:  var(--zd-radius-lg);
 
   /* Button text role — XXS/XS/SM = A12, MD = A14, LG/XL = A16 */
@@ -405,6 +545,110 @@
 
   /* Bottom tab bar */
   --zd-tabbar-dot-size:   9px;
+
+  /* ============================================================
+   * BUTTON COLOR TOKENS (component layer)
+   * Maps 1:1 to button.{variant}.{state}.{slot} in the canonical
+   * design-token JSON. Components MUST consume these — never the
+   * underlying semantic tokens.
+   * Naming: --zd-btn-{variant}-{state}-{slot}
+   *   variants: primary, secondary, tertiary, neutral,
+   *             link-secondary, link-neutral,
+   *             super-saver, super-saver-outline
+   *   states:   default, pressed, disabled
+   *   slots:    bg, text, border, icon
+   * ============================================================ */
+
+  /* — primary */
+  --zd-btn-primary-default-bg:       var(--zd-surface-brand-secondary-bold);
+  --zd-btn-primary-default-text:     var(--zd-text-on-surface-bold);
+  --zd-btn-primary-default-icon:     var(--zd-icon-on-surface-bold);
+  --zd-btn-primary-pressed-bg:       var(--zd-pink-700);
+  --zd-btn-primary-pressed-text:     var(--zd-text-on-surface-bold);
+  --zd-btn-primary-pressed-icon:     var(--zd-icon-on-surface-bold);
+  --zd-btn-primary-disabled-bg:      var(--zd-surface-tertiary);
+  --zd-btn-primary-disabled-text:    var(--zd-text-disabled);
+  --zd-btn-primary-disabled-icon:    var(--zd-icon-disabled);
+
+  /* — secondary (outline) */
+  --zd-btn-secondary-default-bg:      var(--zd-surface-primary);
+  --zd-btn-secondary-default-text:    var(--zd-text-brand-secondary);
+  --zd-btn-secondary-default-border:  var(--zd-border-brand-secondary-bold);
+  --zd-btn-secondary-default-icon:    var(--zd-icon-brand-secondary);
+  --zd-btn-secondary-pressed-bg:      var(--zd-surface-brand-secondary-subtle);
+  --zd-btn-secondary-pressed-text:    var(--zd-text-brand-secondary);
+  --zd-btn-secondary-pressed-border:  var(--zd-border-brand-secondary-bold);
+  --zd-btn-secondary-pressed-icon:    var(--zd-icon-brand-secondary);
+  --zd-btn-secondary-disabled-bg:     var(--zd-surface-primary);
+  --zd-btn-secondary-disabled-text:   var(--zd-text-disabled);
+  --zd-btn-secondary-disabled-border: var(--zd-border-default);
+  --zd-btn-secondary-disabled-icon:   var(--zd-icon-disabled);
+
+  /* — tertiary (dark filled) */
+  --zd-btn-tertiary-default-bg:      var(--zd-surface-secondary-dark);
+  --zd-btn-tertiary-default-text:    var(--zd-text-on-surface-bold);
+  --zd-btn-tertiary-default-icon:    var(--zd-icon-on-surface-bold);
+  --zd-btn-tertiary-pressed-bg:      var(--zd-surface-primary-dark);
+  --zd-btn-tertiary-pressed-text:    var(--zd-text-on-surface-bold);
+  --zd-btn-tertiary-pressed-icon:    var(--zd-icon-on-surface-bold);
+  --zd-btn-tertiary-disabled-bg:     var(--zd-surface-tertiary);
+  --zd-btn-tertiary-disabled-text:   var(--zd-text-disabled);
+  --zd-btn-tertiary-disabled-icon:   var(--zd-icon-disabled);
+
+  /* — neutral (white w/ default border) */
+  --zd-btn-neutral-default-bg:       var(--zd-surface-primary);
+  --zd-btn-neutral-default-text:     var(--zd-text-primary);
+  --zd-btn-neutral-default-border:   var(--zd-border-default);
+  --zd-btn-neutral-default-icon:     var(--zd-icon-primary);
+  --zd-btn-neutral-pressed-bg:       var(--zd-surface-tertiary);
+  --zd-btn-neutral-pressed-text:     var(--zd-text-primary);
+  --zd-btn-neutral-pressed-border:   var(--zd-border-default);
+  --zd-btn-neutral-pressed-icon:     var(--zd-icon-primary);
+  --zd-btn-neutral-disabled-bg:      var(--zd-surface-primary);
+  --zd-btn-neutral-disabled-text:    var(--zd-text-disabled);
+  --zd-btn-neutral-disabled-border:  var(--zd-border-default);
+  --zd-btn-neutral-disabled-icon:    var(--zd-icon-disabled);
+
+  /* — link-secondary (text-only, brand-secondary) */
+  --zd-btn-link-secondary-default-text:  var(--zd-text-brand-secondary);
+  --zd-btn-link-secondary-default-icon:  var(--zd-icon-brand-secondary);
+  --zd-btn-link-secondary-pressed-text:  var(--zd-text-brand-secondary);
+  --zd-btn-link-secondary-pressed-icon:  var(--zd-icon-brand-secondary);
+  --zd-btn-link-secondary-disabled-text: var(--zd-text-disabled);
+  --zd-btn-link-secondary-disabled-icon: var(--zd-icon-disabled);
+
+  /* — link-neutral (text-only, neutral) */
+  --zd-btn-link-neutral-default-text:    var(--zd-text-primary);
+  --zd-btn-link-neutral-default-icon:    var(--zd-icon-primary);
+  --zd-btn-link-neutral-pressed-text:    var(--zd-text-primary);
+  --zd-btn-link-neutral-pressed-icon:    var(--zd-icon-primary);
+  --zd-btn-link-neutral-disabled-text:   var(--zd-text-disabled);
+  --zd-btn-link-neutral-disabled-icon:   var(--zd-icon-disabled);
+
+  /* — super-saver (filled deep green) */
+  --zd-btn-super-saver-default-bg:    var(--zd-surface-super-saver);
+  --zd-btn-super-saver-default-text:  var(--zd-text-on-surface-bold);
+  --zd-btn-super-saver-default-icon:  var(--zd-icon-on-surface-bold);
+  --zd-btn-super-saver-pressed-bg:    var(--zd-surface-super-saver);
+  --zd-btn-super-saver-pressed-text:  var(--zd-text-on-surface-bold);
+  --zd-btn-super-saver-pressed-icon:  var(--zd-icon-on-surface-bold);
+  --zd-btn-super-saver-disabled-bg:   var(--zd-surface-tertiary);
+  --zd-btn-super-saver-disabled-text: var(--zd-text-disabled);
+  --zd-btn-super-saver-disabled-icon: var(--zd-icon-disabled);
+
+  /* — super-saver-outline */
+  --zd-btn-super-saver-outline-default-bg:      var(--zd-surface-primary);
+  --zd-btn-super-saver-outline-default-text:    var(--zd-text-super-saver);
+  --zd-btn-super-saver-outline-default-border:  var(--zd-border-super-saver);
+  --zd-btn-super-saver-outline-default-icon:    var(--zd-icon-super-saver);
+  --zd-btn-super-saver-outline-pressed-bg:      var(--zd-surface-primary);
+  --zd-btn-super-saver-outline-pressed-text:    var(--zd-text-super-saver);
+  --zd-btn-super-saver-outline-pressed-border:  var(--zd-border-super-saver);
+  --zd-btn-super-saver-outline-pressed-icon:    var(--zd-icon-super-saver);
+  --zd-btn-super-saver-outline-disabled-bg:     var(--zd-surface-tertiary);
+  --zd-btn-super-saver-outline-disabled-text:   var(--zd-text-disabled);
+  --zd-btn-super-saver-outline-disabled-border: var(--zd-border-default);
+  --zd-btn-super-saver-outline-disabled-icon:   var(--zd-icon-disabled);
 }
 
 /* ============================================================
@@ -512,7 +756,7 @@ body {
   font-family: var(--zd-font-sans);
   font-size: var(--zd-b14-size);
   line-height: var(--zd-b14-lh);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
   background: var(--zd-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -9,11 +9,11 @@
   font-size: var(--zd-b12-size);
   line-height: var(--zd-b12-lh);
   font-weight: var(--zd-fw-demi);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
 }
 
 .required {
-  color: var(--zd-text-error);
+  color: var(--zd-text-error-bold);
   margin-left: 2px;
 }
 
@@ -43,11 +43,11 @@
   border-color: var(--zd-border-error);
 }
 .wrapper.error.focused {
-  box-shadow: 0 0 0 3px var(--zd-red-50);
+  box-shadow: 0 0 0 3px var(--zd-surface-error-subtle);
 }
 
 .wrapper.disabled {
-  background: var(--zd-grey-50);
+  background: var(--zd-surface-secondary);
   cursor: not-allowed;
 }
 
@@ -61,7 +61,7 @@
   font-family: inherit;
   font-size: var(--zd-input-text-size);
   line-height: var(--zd-input-text-lh);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
   min-width: 0;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .helper.errorText {
-  color: var(--zd-text-error);
+  color: var(--zd-text-error-bold);
 }
 
 /* Single size — preview standard (44h). md/sm/lg kept as aliases for back-compat. */

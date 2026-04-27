@@ -15,7 +15,7 @@ function PromoBanner({ title, kicker, bg = 'var(--zd-brand)', accent = '#fff', o
 function CategoryStrip({ categories, onTap }) {
   return (
     <div style={{ padding: '14px 0' }}>
-      <div style={{ padding: '0 16px 8px', fontSize: 13, fontWeight: 700, color: 'var(--zd-text)' }}>Shop by category</div>
+      <div style={{ padding: '0 16px 8px', fontSize: 13, fontWeight: 700, color: 'var(--zd-text-primary)' }}>Shop by category</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8, padding: '0 16px' }}>
         {categories.map(c => (
           <button key={c.id} onClick={() => onTap(c)} style={{
@@ -26,7 +26,7 @@ function CategoryStrip({ categories, onTap }) {
               width: 56, height: 56, borderRadius: 12, background: c.bg,
               display: 'flex', alignItems: 'center', justifyContent: 'center', color: c.fg, fontSize: 22, fontWeight: 700,
             }}>{c.glyph}</div>
-            <span style={{ fontSize: 10, color: 'var(--zd-text)', textAlign: 'center', lineHeight: 1.2 }}>{c.label}</span>
+            <span style={{ fontSize: 10, color: 'var(--zd-text-primary)', textAlign: 'center', lineHeight: 1.2 }}>{c.label}</span>
           </button>
         ))}
       </div>
@@ -54,7 +54,7 @@ function PassStrip({ onTap }) {
 function SectionHeader({ title, action }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px 6px' }}>
-      <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--zd-text)' }}>{title}</span>
+      <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--zd-text-primary)' }}>{title}</span>
       {action && (
         <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--zd-brand)', letterSpacing: 0.2 }}>{action} ›</span>
       )}

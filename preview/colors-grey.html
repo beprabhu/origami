@@ -1,21 +1,28 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
-body{margin:0;padding:20px;background:#fff}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.sw{display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--zd-font-sans);font-size:11px;color:var(--zd-text-secondary)}
-.sw .chip{width:64px;height:64px;border-radius:12px;border:1px solid var(--zd-border)}
-.sw code{font-family:ui-monospace,Menlo,monospace;color:var(--zd-text)}
+body{margin:0;padding:20px;background:var(--zd-surface-primary);font-family:var(--zd-font-sans)}
+h3{margin:0 0 4px;font-size:14px;font-weight:600;color:var(--zd-text-primary);text-transform:capitalize}
+p{margin:0 0 14px;font-size:12px;line-height:16px;color:var(--zd-text-secondary)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.card{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--zd-border-default);border-radius:8px;background:var(--zd-surface-primary)}
+.chip{width:36px;height:36px;border-radius:6px;flex-shrink:0;border:1px solid rgba(0,0,0,.06)}
+.meta{min-width:0;flex:1}
+.step{font-size:13px;font-weight:600;color:var(--zd-text-primary)}
+.tok,.hex{display:block;font-family:var(--zd-font-mono,ui-monospace,Menlo,monospace);font-size:10px;line-height:14px;color:var(--zd-text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hex{color:var(--zd-text-tertiary)}
 </style></head><body>
-<div class="row">
-  <div class="sw"><div class="chip" style="background:#ffffff"></div><span>white</span><code>#ffffff</code></div>
-  <div class="sw"><div class="chip" style="background:#f3f5f7"></div><span>50</span><code>#f3f5f7</code></div>
-  <div class="sw"><div class="chip" style="background:#eaedf1"></div><span>100</span><code>#eaedf1</code></div>
-  <div class="sw"><div class="chip" style="background:#dfe4ec"></div><span>200</span><code>#dfe4ec</code></div>
-  <div class="sw"><div class="chip" style="background:#c2c9d6"></div><span>300</span><code>#c2c9d6</code></div>
-  <div class="sw"><div class="chip" style="background:#8b96a7"></div><span>400</span><code>#8b96a7</code></div>
-  <div class="sw"><div class="chip" style="background:#586274"></div><span style="color:#586274">500</span><code>#586274</code></div>
-  <div class="sw"><div class="chip" style="background:#424957"></div><span>600</span><code>#424957</code></div>
-  <div class="sw"><div class="chip" style="background:#2e3642"></div><span>700</span><code>#2e3642</code></div>
-  <div class="sw"><div class="chip" style="background:#1e242e"></div><span>800</span><code>#1e242e</code></div>
-  <div class="sw"><div class="chip" style="background:#101418"></div><span>900</span><code>#101418</code></div>
-</div>
+<h3>grey</h3>
+<p>Text, surfaces, borders.</p>
+<div class="grid" id="g"></div>
+<script>
+const STEPS=[50,100,200,300,400,500,600,700,800,900];
+const root=getComputedStyle(document.documentElement);
+const g=document.getElementById('g');
+for(const s of STEPS){
+  const tok='--zd-grey-'+s;
+  const hex=root.getPropertyValue(tok).trim();
+  const el=document.createElement('div');el.className='card';
+  el.innerHTML='<div class="chip" style="background:var('+tok+')"></div><div class="meta"><div class="step">'+s+'</div><code class="tok">'+tok+'</code><code class="hex">'+hex+'</code></div>';
+  g.appendChild(el);
+}
+</script>
 </body></html>

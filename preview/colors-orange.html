@@ -10,15 +10,15 @@ p{margin:0 0 14px;font-size:12px;line-height:16px;color:var(--zd-text-secondary)
 .tok,.hex{display:block;font-family:var(--zd-font-mono,ui-monospace,Menlo,monospace);font-size:10px;line-height:14px;color:var(--zd-text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .hex{color:var(--zd-text-tertiary)}
 </style></head><body>
-<h3>pink</h3>
-<p>Flagship brand → Zepto's hot pink. CTAs, price tags, urgency.</p>
+<h3>orange</h3>
+<p>Warning, hot deals.</p>
 <div class="grid" id="g"></div>
 <script>
 const STEPS=[50,100,200,300,400,500,600,700,800,900];
 const root=getComputedStyle(document.documentElement);
 const g=document.getElementById('g');
 for(const s of STEPS){
-  const tok='--zd-pink-'+s;
+  const tok='--zd-orange-'+s;
   const hex=root.getPropertyValue(tok).trim();
   const el=document.createElement('div');el.className='card';
   el.innerHTML='<div class="chip" style="background:var('+tok+')"></div><div class="meta"><div class="step">'+s+'</div><code class="tok">'+tok+'</code><code class="hex">'+hex+'</code></div>';

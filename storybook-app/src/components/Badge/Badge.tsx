@@ -5,7 +5,7 @@ export type BadgeTone =
   | 'brand'
   | 'success'
   | 'warning'
-  | 'error'
+  | 'featureTag'
   | 'neutral'
   | 'info';
 

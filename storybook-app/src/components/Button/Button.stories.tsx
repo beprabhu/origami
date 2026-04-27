@@ -1,5 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from './Button';
+import { Button, type ButtonProps } from './Button';
+import { Icon } from '../Icon';
+
+type PlaygroundArgs = ButtonProps & {
+  showLeftIcon?: boolean;
+  showRightIcon?: boolean;
+};
 
 const meta = {
   title: 'Components/Button',
@@ -9,14 +15,14 @@ const meta = {
     docs: {
       description: {
         component:
-          'The brand\'s primary CTA primitive. Variants follow Zesto: `primary` is the hot-pink Zepto CTA used on Add-to-Cart, Pay, and other commit actions. Sizes map to the height token scale (24/28/32/40/48/56 px).',
+          'The brand\'s primary CTA primitive. Eight variants drive every commit action across the product: `primary` (hot-pink filled, default Add-to-Cart / Pay), `secondary` (outlined), `tertiary` (dark filled), `neutral` (white w/ border), `link-secondary` & `link-neutral` (text-only), and the Super Saver pair (`super-saver`, `super-saver-outline`). Sizes map to the height token scale (24/28/32/40/48/56 px). Toggle `showLeftIcon` / `showRightIcon` in the Playground to see icon slots.',
       },
     },
   },
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'tertiary', 'neutral', 'ghost', 'destructive'],
+      options: ['primary', 'secondary', 'tertiary', 'neutral', 'link-secondary', 'link-neutral', 'super-saver', 'super-saver-outline'],
     },
     size: {
       control: 'select',
@@ -27,18 +33,35 @@ const meta = {
     disabled: { control: 'boolean' },
     children: { control: 'text' },
     onClick: { action: 'clicked' },
-    leftIcon: { control: false },
-    rightIcon: { control: false },
+    leftIcon: { control: false, table: { disable: true } },
+    rightIcon: { control: false, table: { disable: true } },
+    showLeftIcon: {
+      control: 'boolean',
+      description: 'Playground only — toggles a `<Icon name="lightning" weight="fill" />` in the leftIcon slot.',
+    },
+    showRightIcon: {
+      control: 'boolean',
+      description: 'Playground only — toggles a `<Icon name="caret-right" weight="bold" />` in the rightIcon slot.',
+    },
   },
   args: {
     variant: 'primary',
     size: 'md',
     children: 'Add to cart',
+    showLeftIcon: false,
+    showRightIcon: false,
   },
-} satisfies Meta<typeof Button>;
+  render: ({ showLeftIcon, showRightIcon, ...args }: PlaygroundArgs) => (
+    <Button
+      {...args}
+      leftIcon={showLeftIcon ? <Icon name="lightning" weight="fill" size={14} /> : undefined}
+      rightIcon={showRightIcon ? <Icon name="caret-right" weight="bold" size={14} /> : undefined}
+    />
+  ),
+} satisfies Meta<PlaygroundArgs>;
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<PlaygroundArgs>;
 
 // ─── Default playground ─────────────────────────────────────────────
 export const Playground: Story = {};
@@ -49,7 +72,7 @@ export const Variants: Story = {
     docs: {
       description: {
         story:
-          'All six variants at the default `md` size. `primary` is the default; `secondary` is the brand-outlined sibling; `tertiary` and `ghost` are low-emphasis; `neutral` is the dark CTA used on white surfaces; `destructive` is reserved for delete/cancel.',
+          'All eight variants at the default `md` size. `primary` is the brand-pink filled CTA; `secondary` is the outlined sibling; `tertiary` is the dark filled; `neutral` is white with a default border; the `link-*` pair is text-only; `super-saver` and `super-saver-outline` carry the deep-green Super Saver mark.',
       },
     },
   },
@@ -59,8 +82,10 @@ export const Variants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="tertiary">Tertiary</Button>
       <Button variant="neutral">Neutral</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="destructive">Destructive</Button>
+      <Button variant="link-secondary">Link secondary</Button>
+      <Button variant="link-neutral">Link neutral</Button>
+      <Button variant="super-saver">Super Saver</Button>
+      <Button variant="super-saver-outline">Super Saver outline</Button>
     </div>
   ),
 };
@@ -97,21 +122,6 @@ export const States: Story = {
   ),
 };
 
-// ─── With icons ─────────────────────────────────────────────────────
-import { Icon } from '../Icon';
-
-export const WithIcons: Story = {
-  render: () => (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center' }}>
-      <Button leftIcon={<Icon name="lightning" weight="fill" size={14} />}>Order in 10 mins</Button>
-      <Button rightIcon={<Icon name="caret-right" weight="bold" size={14} />}>Checkout</Button>
-      <Button variant="secondary" leftIcon={<Icon name="lightning" weight="fill" size={14} />} rightIcon={<Icon name="caret-right" weight="bold" size={14} />}>
-        Track order
-      </Button>
-    </div>
-  ),
-};
-
 // ─── Full width ────────────────────────────────────────────────────
 export const FullWidth: Story = {
   parameters: {
@@ -122,7 +132,7 @@ export const FullWidth: Story = {
     },
   },
   render: () => (
-    <div style={{ width: 320, padding: 16, background: 'var(--zd-grey-50)', borderRadius: 12 }}>
+    <div style={{ width: 320, padding: 16, background: 'var(--zd-surface-secondary)', borderRadius: 12 }}>
       <Button fullWidth size="xl">
         Pay ₹245
       </Button>

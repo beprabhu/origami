@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
+body{margin:0;padding:20px;background:var(--zd-surface-primary);font-family:var(--zd-font-sans)}
+h2{margin:0 0 4px;font-size:16px;font-weight:700;color:var(--zd-text-primary)}
+.intro{margin:0 0 16px;font-size:12px;line-height:16px;color:var(--zd-text-secondary)}
+.intro code{font-family:var(--zd-font-mono,ui-monospace,Menlo,monospace);font-size:11px;background:var(--zd-surface-secondary);padding:1px 5px;border-radius:4px}
+h3{margin:18px 0 8px;font-size:13px;font-weight:600;color:var(--zd-text-primary)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.card{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--zd-border-default);border-radius:8px;background:var(--zd-surface-primary)}
+.card.dark{background:var(--zd-grey-900);border-color:var(--zd-grey-800)}
+.card.dark .lbl{color:var(--zd-grey-50)}
+.card.dark .tok,.card.dark .hex{color:var(--zd-grey-300)}
+.chip{width:36px;height:36px;border-radius:6px;flex-shrink:0;border:1px solid rgba(0,0,0,.08)}
+.meta{min-width:0;flex:1}
+.lbl{font-size:12px;font-weight:600;color:var(--zd-text-primary)}
+.tok,.hex{display:block;font-family:var(--zd-font-mono,ui-monospace,Menlo,monospace);font-size:10px;line-height:14px;color:var(--zd-text-secondary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hex{color:var(--zd-text-tertiary)}
+</style></head><body>
+<h2>Semantic Text</h2>
+<p class="intro">Every <code>--zd-text-*</code> token. Always reference these in components — never raw <code>--zd-grey-*</code> or <code>--zd-pink-*</code>.</p>
+<div id="root"></div>
+<script>
+const GROUPS=[["Neutral","",["--zd-text-primary","--zd-text-primary-subtle","--zd-text-secondary","--zd-text-tertiary","--zd-text-disabled","--zd-text-disabled-light","--zd-text-muted","--zd-text-light"]],["Brand","",["--zd-text-brand-primary","--zd-text-brand-secondary"]],["Brand — on dark","dark",["--zd-text-brand-primary-subtle","--zd-text-brand-secondary-subtle"]],["Status — bold","",["--zd-text-success-bold","--zd-text-warning-bold","--zd-text-error-bold","--zd-text-highlight-bold","--zd-text-accent-bold"]],["Status — subtle (on dark)","dark",["--zd-text-success-subtle","--zd-text-warning-subtle","--zd-text-error-subtle","--zd-text-highlight-subtle","--zd-text-accent-subtle"]],["On-surface","dark",["--zd-text-on-surface-bold","--zd-text-on-surface-subtle"]],["Specialty","",["--zd-text-success-inverted","--zd-text-super-saver"]]];
+const root=getComputedStyle(document.documentElement);
+const out=document.getElementById('root');
+for(const [title,modifier,tokens] of GROUPS){
+  const h=document.createElement('h3');h.textContent=title;out.appendChild(h);
+  const grid=document.createElement('div');grid.className='grid';
+  for(const tok of tokens){
+    const hex=root.getPropertyValue(tok).trim();
+    const lbl=tok.replace('--zd-','');
+    const card=document.createElement('div');card.className='card'+(modifier?' '+modifier:'');
+    card.innerHTML='<div class="chip" style="background:var('+tok+')"></div><div class="meta"><div class="lbl">'+lbl+'</div><code class="tok">'+tok+'</code><code class="hex">'+hex+'</code></div>';
+    grid.appendChild(card);
+  }
+  out.appendChild(grid);
+}
+</script>
+</body></html>

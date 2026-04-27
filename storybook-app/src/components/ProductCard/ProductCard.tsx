@@ -42,6 +42,9 @@ export type PlaceholderTone =
   | 'rice'
   | 'diaper';
 
+// NOTE: these are illustration tones for sample placeholder images
+// (not semantic brand colors). They live local to this component
+// because they are NOT referenced anywhere in the canonical token JSON.
 const TONES: Record<PlaceholderTone, [string, string]> = {
   milk: ['#e8f4fb', '#bcd9ec'],
   banana: ['#fff7d6', '#f0d96a'],
@@ -70,13 +73,13 @@ function HeartIcon() {
     <Icon
       name="heart"
       size={14}
-      style={{ color: '#fff', filter: 'drop-shadow(0 0 0.5px var(--zd-grey-300))' }}
+      style={{ color: 'var(--zd-icon-on-surface-bold)', filter: 'drop-shadow(0 0 0.5px var(--zd-border-medium))' }}
     />
   );
 }
 
 function StarIcon() {
-  return <Icon name="star" weight="fill" size={10} style={{ color: 'var(--zd-green-800)' }} />;
+  return <Icon name="star" weight="fill" size={10} style={{ color: 'var(--zd-icon-success-bold)' }} />;
 }
 
 export interface ProductCardProps {

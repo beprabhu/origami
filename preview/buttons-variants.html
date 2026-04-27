@@ -1,6 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
-body{margin:0;padding:24px;background:#fff;font-family:var(--zd-font-sans)}
-/* Button base — token-driven, mirrors storybook-app/src/components/Button/Button.module.css */
+body{margin:0;padding:24px;background:var(--zd-surface-primary);font-family:var(--zd-font-sans)}
+/* Button base — drives EVERY style from --zd-btn-* component tokens.
+   Mirrors storybook-app/src/components/Button/Button.module.css */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:var(--zd-space-2);
   font-family:var(--zd-font-sans);font-weight:var(--zd-fw-demi);
@@ -8,32 +9,94 @@ body{margin:0;padding:24px;background:#fff;font-family:var(--zd-font-sans)}
   height:var(--zd-btn-h-md);padding:0 var(--zd-btn-px-md);
   font-size:var(--zd-btn-text-md-size);line-height:var(--zd-btn-text-md-lh);
   letter-spacing:var(--zd-a14-tracking);border-radius:var(--zd-btn-r-md);
-  transition:background-color var(--zd-dur-fast) var(--zd-ease-standard);
+  transition:background-color var(--zd-dur-fast) var(--zd-ease-standard),
+             color var(--zd-dur-fast) var(--zd-ease-standard),
+             border-color var(--zd-dur-fast) var(--zd-ease-standard);
 }
-.btn-primary{background:var(--zd-brand);color:#fff;border-color:var(--zd-brand)}
-.btn-primary:hover{background:var(--zd-brand-hover);border-color:var(--zd-brand-hover)}
-.btn-secondary{background:#fff;color:var(--zd-brand);border-color:var(--zd-brand)}
-.btn-secondary:hover{background:var(--zd-brand-subtle)}
-.btn-tertiary{background:transparent;color:var(--zd-text)}
-.btn-tertiary:hover{background:var(--zd-grey-100)}
-.btn-neutral{background:var(--zd-grey-900);color:#fff;border-color:var(--zd-grey-900)}
-.btn-neutral:hover{background:var(--zd-grey-800);border-color:var(--zd-grey-800)}
-.btn-ghost{background:transparent;color:var(--zd-brand)}
-.btn-ghost:hover{background:var(--zd-brand-subtle)}
-.btn-disabled{background:var(--zd-grey-100);color:var(--zd-text-disabled);border-color:var(--zd-grey-100);cursor:not-allowed}
-.row{display:flex;gap:10px;flex-wrap:wrap}
-.lbl{font-size:var(--zd-o10-size);line-height:var(--zd-o10-lh);color:var(--zd-text-tertiary);margin-bottom:8px;text-transform:uppercase;letter-spacing:var(--zd-o10-tracking)}
-.section{margin-bottom:14px}
+
+/* primary */
+.btn-primary{background:var(--zd-btn-primary-default-bg);color:var(--zd-btn-primary-default-text);border-color:var(--zd-btn-primary-default-bg)}
+.btn-primary:hover{background:var(--zd-btn-primary-pressed-bg);border-color:var(--zd-btn-primary-pressed-bg)}
+
+/* secondary */
+.btn-secondary{background:var(--zd-btn-secondary-default-bg);color:var(--zd-btn-secondary-default-text);border-color:var(--zd-btn-secondary-default-border)}
+.btn-secondary:hover{background:var(--zd-btn-secondary-pressed-bg)}
+
+/* tertiary */
+.btn-tertiary{background:var(--zd-btn-tertiary-default-bg);color:var(--zd-btn-tertiary-default-text);border-color:var(--zd-btn-tertiary-default-bg)}
+.btn-tertiary:hover{background:var(--zd-btn-tertiary-pressed-bg);border-color:var(--zd-btn-tertiary-pressed-bg)}
+
+/* neutral */
+.btn-neutral{background:var(--zd-btn-neutral-default-bg);color:var(--zd-btn-neutral-default-text);border-color:var(--zd-btn-neutral-default-border)}
+.btn-neutral:hover{background:var(--zd-btn-neutral-pressed-bg)}
+
+/* link-secondary */
+.btn-link-secondary{background:transparent;border-color:transparent;color:var(--zd-btn-link-secondary-default-text);padding:0;height:auto;border-radius:0}
+.btn-link-secondary:hover{text-decoration:underline}
+
+/* link-neutral */
+.btn-link-neutral{background:transparent;border-color:transparent;color:var(--zd-btn-link-neutral-default-text);padding:0;height:auto;border-radius:0}
+.btn-link-neutral:hover{text-decoration:underline}
+
+/* super-saver */
+.btn-super-saver{background:var(--zd-btn-super-saver-default-bg);color:var(--zd-btn-super-saver-default-text);border-color:var(--zd-btn-super-saver-default-bg)}
+.btn-super-saver:hover{background:var(--zd-btn-super-saver-pressed-bg);border-color:var(--zd-btn-super-saver-pressed-bg)}
+
+/* super-saver-outline */
+.btn-super-saver-outline{background:var(--zd-btn-super-saver-outline-default-bg);color:var(--zd-btn-super-saver-outline-default-text);border-color:var(--zd-btn-super-saver-outline-default-border)}
+.btn-super-saver-outline:hover{background:var(--zd-btn-super-saver-outline-pressed-bg)}
+
+/* disabled (works on any variant) */
+.btn-primary[disabled]{background:var(--zd-btn-primary-disabled-bg);color:var(--zd-btn-primary-disabled-text);border-color:var(--zd-btn-primary-disabled-bg);cursor:not-allowed}
+.btn-secondary[disabled]{background:var(--zd-btn-secondary-disabled-bg);color:var(--zd-btn-secondary-disabled-text);border-color:var(--zd-btn-secondary-disabled-border);cursor:not-allowed}
+.btn-tertiary[disabled]{background:var(--zd-btn-tertiary-disabled-bg);color:var(--zd-btn-tertiary-disabled-text);border-color:var(--zd-btn-tertiary-disabled-bg);cursor:not-allowed}
+.btn-neutral[disabled]{background:var(--zd-btn-neutral-disabled-bg);color:var(--zd-btn-neutral-disabled-text);border-color:var(--zd-btn-neutral-disabled-border);cursor:not-allowed}
+.btn-link-secondary[disabled]{color:var(--zd-btn-link-secondary-disabled-text);cursor:not-allowed}
+.btn-link-neutral[disabled]{color:var(--zd-btn-link-neutral-disabled-text);cursor:not-allowed}
+.btn-super-saver[disabled]{background:var(--zd-btn-super-saver-disabled-bg);color:var(--zd-btn-super-saver-disabled-text);border-color:var(--zd-btn-super-saver-disabled-bg);cursor:not-allowed}
+.btn-super-saver-outline[disabled]{background:var(--zd-btn-super-saver-outline-disabled-bg);color:var(--zd-btn-super-saver-outline-disabled-text);border-color:var(--zd-btn-super-saver-outline-disabled-border);cursor:not-allowed}
+
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.lbl{font-size:var(--zd-o10-size);line-height:var(--zd-o10-lh);color:var(--zd-text-tertiary);margin:14px 0 8px;text-transform:uppercase;letter-spacing:var(--zd-o10-tracking)}
+.lbl:first-child{margin-top:0}
+/* Icon slot — mirrors .icon in Button.module.css */
+.btn .ico{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;flex:0 0 auto;line-height:0}
+.btn .ico svg{width:14px;height:14px;display:block}
+.btn .ico svg path{fill:currentColor}
 </style></head><body>
-<div class="section">
-  <div class="lbl">Variants · md / 40px · A14</div>
-  <div class="row">
-    <button class="btn btn-primary">Primary</button>
-    <button class="btn btn-secondary">Secondary</button>
-    <button class="btn btn-tertiary">Tertiary</button>
-    <button class="btn btn-neutral">Neutral</button>
-    <button class="btn btn-ghost">Ghost</button>
-    <button class="btn btn-disabled" disabled>Disabled</button>
-  </div>
+
+<div class="lbl">Default · md / 40px · A14</div>
+<div class="row">
+  <button class="btn btn-primary">Primary</button>
+  <button class="btn btn-secondary">Secondary</button>
+  <button class="btn btn-tertiary">Tertiary</button>
+  <button class="btn btn-neutral">Neutral</button>
+  <button class="btn btn-link-secondary">Link secondary</button>
+  <button class="btn btn-link-neutral">Link neutral</button>
+  <button class="btn btn-super-saver">Super Saver</button>
+  <button class="btn btn-super-saver-outline">Super Saver outline</button>
 </div>
+
+<div class="lbl">Disabled</div>
+<div class="row">
+  <button class="btn btn-primary" disabled>Primary</button>
+  <button class="btn btn-secondary" disabled>Secondary</button>
+  <button class="btn btn-tertiary" disabled>Tertiary</button>
+  <button class="btn btn-neutral" disabled>Neutral</button>
+  <button class="btn btn-link-secondary" disabled>Link secondary</button>
+  <button class="btn btn-super-saver" disabled>Super Saver</button>
+  <button class="btn btn-super-saver-outline" disabled>Super Saver outline</button>
+</div>
+
+<div class="lbl">With icons · leftIcon / rightIcon</div>
+<div class="row">
+  <button class="btn btn-primary"><span class="ico"><svg viewBox="0 0 256 256"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"></path></svg></span>Order in 10 mins</button>
+  <button class="btn btn-primary">Checkout<span class="ico"><svg viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path></svg></span></button>
+  <button class="btn btn-secondary"><span class="ico"><svg viewBox="0 0 256 256"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"></path></svg></span>Track order<span class="ico"><svg viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path></svg></span></button>
+  <button class="btn btn-tertiary">Next<span class="ico"><svg viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path></svg></span></button>
+  <button class="btn btn-super-saver"><span class="ico"><svg viewBox="0 0 256 256"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"></path></svg></span>Save ₹40</button>
+  <button class="btn btn-link-secondary">View all<span class="ico"><svg viewBox="0 0 256 256"><path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path></svg></span></button>
+  <button class="btn btn-primary" disabled><span class="ico"><svg viewBox="0 0 256 256"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17Z"></path></svg></span>Disabled</button>
+</div>
+
 </body></html>

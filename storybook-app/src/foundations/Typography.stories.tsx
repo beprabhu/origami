@@ -57,6 +57,16 @@ export const Body: Story = {
       <Row cls="zd-b16" label="16 / 24 · 400" />
       <Row cls="zd-b14" label="14 / 20 · 400" />
       <Row cls="zd-b12" label="12 / 16 · 400" />
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '10px 0', borderBottom: '1px solid var(--zd-border)' }}>
+        <code style={{ fontFamily: 'var(--zd-font-mono)', fontSize: 11, color: 'var(--zd-text-tertiary)', minWidth: 100 }}>.zd-b10</code>
+        <div style={{ minWidth: 80, fontSize: 11, color: 'var(--zd-text-tertiary)' }}>10 / 12 · 400</div>
+        <div className="zd-b10">500 g · ₹85 / kg · Net qty + unit price on product cards</div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, padding: '10px 0', borderBottom: '1px solid var(--zd-border)' }}>
+        <code style={{ fontFamily: 'var(--zd-font-mono)', fontSize: 11, color: 'var(--zd-text-tertiary)', minWidth: 100 }}>.zd-b8</code>
+        <div style={{ minWidth: 80, fontSize: 11, color: 'var(--zd-text-tertiary)' }}>8 / 10 · 400</div>
+        <div className="zd-b8">BEST VALUE — micro pills, ribbon copy, savings stamps</div>
+      </div>
     </div>
   ),
 };

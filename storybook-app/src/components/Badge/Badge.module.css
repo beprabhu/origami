@@ -5,8 +5,8 @@
   font-family: var(--zd-font-sans);
   font-weight: var(--zd-fw-demi);
   white-space: nowrap;
-  border-radius: var(--zd-radius-pill);
-  border: 1px solid transparent;
+  border-radius: 4px;
+  border: 0.5px solid transparent;
 }
 
 /* ─── Sizes ─── */
@@ -18,11 +18,10 @@
   letter-spacing: 0.5px;
 }
 .md {
-  height: var(--zd-badge-h-md);
-  padding: 0 var(--zd-badge-px-md);
-  font-size: var(--zd-badge-text-md-size);
-  line-height: var(--zd-badge-text-md-lh);
-  letter-spacing: var(--zd-o10-tracking);
+  height: 18px;
+  padding: 0 4px;
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
 }
 .lg {
   height: var(--zd-badge-h-lg);
@@ -36,62 +35,62 @@
   text-transform: uppercase;
 }
 
-/* ─── Tones ─── */
+/* ─── Tones ─── (all values flow through canonical semantic tokens) */
 .brand {
-  background: var(--zd-brand);
-  color: var(--zd-brand-on);
+  background: var(--zd-surface-brand-secondary-bold);
+  color: var(--zd-text-on-surface-bold);
 }
 .brandSubtle {
-  background: var(--zd-brand-subtle);
-  color: var(--zd-brand);
+  background: var(--zd-surface-brand-secondary-subtle);
+  color: var(--zd-text-brand-secondary);
 }
 .success {
-  background: var(--zd-green-700);
-  color: var(--zd-white);
+  background: var(--zd-surface-success-bold);
+  color: var(--zd-text-on-surface-bold);
 }
 .successSubtle {
-  background: var(--zd-green-50);
-  color: var(--zd-text-success);
+  background: var(--zd-surface-success-subtle);
+  color: var(--zd-text-success-bold);
 }
 .warning {
-  background: var(--zd-orange-600);
-  color: var(--zd-white);
+  background: var(--zd-surface-warning-bold);
+  color: var(--zd-text-on-surface-bold);
 }
 .warningSubtle {
-  background: var(--zd-orange-50);
-  color: var(--zd-orange-800);
+  background: var(--zd-surface-warning-subtle);
+  color: var(--zd-text-warning-bold);
 }
-.error {
-  background: var(--zd-red-600);
-  color: var(--zd-white);
+.featureTag {
+  background: var(--zd-surface-error-bold);
+  color: var(--zd-text-on-surface-bold);
 }
-.errorSubtle {
-  background: var(--zd-red-50);
-  color: var(--zd-red-700);
+.featureTagSubtle {
+  background: var(--zd-surface-error-subtle);
+  color: var(--zd-text-error-bold);
 }
 .neutral {
-  background: var(--zd-grey-900);
-  color: var(--zd-white);
+  background: var(--zd-surface-primary-dark);
+  color: var(--zd-text-on-surface-bold);
 }
 .neutralSubtle {
-  background: var(--zd-grey-100);
-  color: var(--zd-grey-700);
+  background: var(--zd-surface-tertiary);
+  color: var(--zd-text-primary-subtle);
 }
 .info {
-  background: var(--zd-blue-700);
-  color: var(--zd-white);
+  background: var(--zd-surface-highlight-bold);
+  color: var(--zd-text-on-surface-bold);
 }
 .infoSubtle {
-  background: var(--zd-blue-50);
-  color: var(--zd-blue-700);
+  background: var(--zd-surface-highlight-subtle);
+  color: var(--zd-text-highlight-bold);
 }
 
 /* Outline variant — solid white fill, colored stroke */
 .outline {
-  background: var(--zd-surface);
+  background: var(--zd-surface-primary);
 }
-.outline.brand { color: var(--zd-brand); border-color: var(--zd-brand); }
-.outline.success { color: var(--zd-text-success); border-color: var(--zd-green-700); background: var(--zd-surface); }
-.outline.warning { color: var(--zd-orange-800); border-color: var(--zd-orange-600); background: var(--zd-surface); }
-.outline.error { color: var(--zd-red-700); border-color: var(--zd-red-600); background: var(--zd-surface); }
-.outline.neutral { color: var(--zd-grey-700); border-color: var(--zd-grey-300); background: var(--zd-surface); }
+.outline.brand { color: var(--zd-text-brand-secondary); border-color: var(--zd-border-brand-secondary-bold); }
+.outline.success { color: var(--zd-text-success-bold); border-color: var(--zd-border-success-bold); background: var(--zd-surface-primary); }
+.outline.warning { color: var(--zd-text-warning-bold); border-color: var(--zd-border-warning-bold); background: var(--zd-surface-primary); }
+.outline.featureTag { color: var(--zd-grey-700); border-color: var(--zd-grey-200); background: var(--zd-surface-tertiary); }
+.outline.neutral { color: var(--zd-text-primary-subtle); border-color: var(--zd-border-medium); background: var(--zd-surface-primary); }

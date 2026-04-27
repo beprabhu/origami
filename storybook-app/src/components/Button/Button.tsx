@@ -6,8 +6,10 @@ export type ButtonVariant =
   | 'secondary'
   | 'tertiary'
   | 'neutral'
-  | 'ghost'
-  | 'destructive';
+  | 'link-secondary'
+  | 'link-neutral'
+  | 'super-saver'
+  | 'super-saver-outline';
 
 export type ButtonSize = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
@@ -31,10 +33,11 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 /**
  * Origami Button — the brand's primary CTA primitive.
  *
- * Variants follow the Zesto reference palette: `primary` (brand-filled),
- * `secondary` (brand-outlined), `tertiary` (ghost on neutral), `neutral`
- * (dark), `ghost`, and `destructive`. Sizes `xxs`–`xl` map 1:1 to the height
- * tokens (24, 28, 32, 40, 48, 56 px).
+ * Variants follow the canonical token JSON: `primary` (brand-pink filled),
+ * `secondary` (brand-pink outline), `tertiary` (dark filled), `neutral`
+ * (white w/ border), `link-secondary` & `link-neutral` (text-only), and
+ * the Super-Saver pair (`super-saver`, `super-saver-outline`).
+ * Sizes `xxs`–`xl` map 1:1 to the height tokens (24, 28, 32, 40, 48, 56 px).
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
   {
@@ -52,9 +55,20 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   },
   ref,
 ) {
+  const variantClass: Record<ButtonVariant, string> = {
+    'primary': styles.primary,
+    'secondary': styles.secondary,
+    'tertiary': styles.tertiary,
+    'neutral': styles.neutral,
+    'link-secondary': styles.linkSecondary,
+    'link-neutral': styles.linkNeutral,
+    'super-saver': styles.superSaver,
+    'super-saver-outline': styles.superSaverOutline,
+  };
+
   const cls = [
     styles.button,
-    styles[variant],
+    variantClass[variant],
     styles[size],
     fullWidth && styles.fullWidth,
     loading && styles.loading,

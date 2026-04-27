@@ -18,7 +18,7 @@ function CartScreen({ items, products, onInc, onDec, onCheckout, onBack, onClose
       {cartItems.length === 0 ? (
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, color: 'var(--zd-text-secondary)' }}>
           <I.Cart width="40" height="40" style={{ color: 'var(--zd-grey-300)' }} />
-          <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--zd-text)' }}>Your cart is empty</div>
+          <div style={{ fontSize: 15, fontWeight: 600, color: 'var(--zd-text-primary)' }}>Your cart is empty</div>
           <div style={{ fontSize: 12 }}>Add items to get started</div>
         </div>
       ) : (
@@ -36,9 +36,9 @@ function CartScreen({ items, products, onInc, onDec, onCheckout, onBack, onClose
                     <ImgPH tone={it.tone} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--zd-text)' }}>{it.name}</div>
+                    <div style={{ fontSize: 12, fontWeight: 500, color: 'var(--zd-text-primary)' }}>{it.name}</div>
                     <div style={{ fontSize: 10, color: 'var(--zd-text-secondary)' }}>{it.qty_label}</div>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--zd-text)', marginTop: 2 }}>₹{it.price}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--zd-text-primary)', marginTop: 2 }}>₹{it.price}</div>
                   </div>
                   <div style={{ display: 'inline-flex', alignItems: 'center', background: 'var(--zd-brand)', borderRadius: 6, color: '#fff' }}>
                     <button onClick={() => onDec(it)} style={qBtn2}><I.Minus width="12" height="12"/></button>
@@ -52,7 +52,7 @@ function CartScreen({ items, products, onInc, onDec, onCheckout, onBack, onClose
               <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>Bill details</div>
               {[['Item total', `₹${subtotal}`], ['Delivery fee', delivery === 0 ? 'FREE' : `₹${delivery}`], ['Handling charge', '₹2']].map(([l, v]) => (
                 <div key={l} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--zd-text-secondary)', marginBottom: 4 }}>
-                  <span>{l}</span><span style={{ color: l === 'Delivery fee' && delivery === 0 ? 'var(--zd-green-800)' : 'var(--zd-text)' }}>{v}</span>
+                  <span>{l}</span><span style={{ color: l === 'Delivery fee' && delivery === 0 ? 'var(--zd-green-800)' : 'var(--zd-text-primary)' }}>{v}</span>
                 </div>
               ))}
               <div style={{ borderTop: '1px solid var(--zd-border)', marginTop: 8, paddingTop: 8, display: 'flex', justifyContent: 'space-between', fontSize: 14, fontWeight: 700 }}>
@@ -76,7 +76,7 @@ function CartScreen({ items, products, onInc, onDec, onCheckout, onBack, onClose
   );
 }
 
-const iconBtn = { background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--zd-text)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 4 };
+const iconBtn = { background: 'transparent', border: 'none', cursor: 'pointer', color: 'var(--zd-text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 4 };
 const qBtn2 = { background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer', padding: '6px 8px', display: 'flex', alignItems: 'center' };
 
 window.CartScreen = CartScreen;

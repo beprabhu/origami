@@ -27,7 +27,7 @@
 }
 
 .tab:hover {
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
 }
 
 .tab.active {

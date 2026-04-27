@@ -9,7 +9,7 @@ function Header({ eta = "10 mins", address = "Bandra West, Mumbai", onSearch }) 
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
         <I.Bolt width="14" height="14" style={{ color: 'var(--zd-brand)' }} />
-        <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--zd-text)' }}>
+        <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--zd-text-primary)' }}>
           Delivery in {eta}
         </div>
       </div>

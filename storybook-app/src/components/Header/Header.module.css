@@ -23,7 +23,7 @@
   font-size: var(--zd-h16-size);
   line-height: var(--zd-h16-lh);
   font-weight: var(--zd-fw-bold);
-  color: var(--zd-text);
+  color: var(--zd-text-primary);
 }
 
 .address {
@@ -48,8 +48,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: var(--zd-grey-50);
-  border: 1px solid var(--zd-border);
+  background: var(--zd-surface-secondary);
+  border: 1px solid var(--zd-border-default);
   border-radius: var(--zd-input-radius);
   height: var(--zd-input-h);
   padding: 0 var(--zd-input-px);
