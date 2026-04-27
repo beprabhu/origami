@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="Zepto Daily Pass">
+  <rect x="0" y="0" width="240" height="80" rx="16" fill="#103520"></rect>
+  <text x="20" y="36" font-family="&#39;Zepto Norms&#39;, system-ui, sans-serif" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="-0.5">daily</text>
+  <text x="20" y="62" font-family="&#39;Zepto Norms&#39;, system-ui, sans-serif" font-weight="700" font-size="22" fill="#ffe852" letter-spacing="0.5">PASS</text>
+</svg>

@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Origami
+
+**Origami** is the React component library powering Zepto. It packages the brand's design
+tokens, primitives, and product components into a single TypeScript package, documented in
+this Storybook.
+
+The system is brand-pink-first, white-dominant, and built on a 4 px grid. **Zepto Norms** is
+the only typeface. Every component is theme-aware via CSS custom properties — the entire
+palette can be re-skinned at runtime by overriding tokens on `:root`.
+
+## What's in here
+
+- **Foundations** — color ramps, semantic tokens, type scale, spacing, radii, and elevation.
+- **Components** — `Button`, `Input`, `Badge`, `ProductCard`, `ProductGrid`.
+- **App Shell** — `Header`, `BottomTabBar`. Drop these straight into any Zepto-flavoured
+  surface; they encode the layout conventions used in production.
+
+## Running locally
+
+```bash
+npm install
+npm run storybook   # http://localhost:6006
+npm run build-storybook  # static export → storybook-static/
+```
+
+## Using the components
+
+Tokens are CSS-first. Import the stylesheet once at app root:
+
+```ts
+import 'origami/dist/styles.css';
+```
+
+Then import components by name:
+
+```tsx
+import { Button, ProductCard, Header } from 'origami';
+
+export function CartCTA() {
+  return (
+    <Button variant="primary" size="xl" fullWidth>
+      Pay ₹245
+    </Button>
+  );
+}
+```
+
+## Tokens, two ways
+
+For string tokens (e.g. populating a select control) use the JS module:
+
+```ts
+import { tokens } from 'origami';
+
+tokens.semantic.brand;     // 'var(--zd-brand)'
+tokens.space[4];           // 'var(--zd-space-4)'
+tokens.radius.lg;          // 'var(--zd-radius-lg)'
+```
+
+The CSS file remains the runtime source of truth — the JS exports are thin
+mirrors so the same name-spaces work in both worlds.
+
+## Styling approach
+
+- **Components own their CSS Modules.** No global classnames leak out.
+- **Modules consume CSS variables** from `tokens.css`. Components don't hard-code
+  hex values — every color resolves to a `--zd-*` variable so themes are swappable.
+- **Optional utility classes** (`.zd-h32`, `.zd-b14`, `.zd-overline`) ship in
+  `tokens.css` for ad-hoc text styling outside components.

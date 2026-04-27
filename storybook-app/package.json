@@ -1,0 +1,39 @@
+{
+  "name": "origami",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Origami — Zepto's design system. Tokens, primitives, and product components, documented in Storybook.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.4.7",
+    "@storybook/addon-actions": "^8.4.7",
+    "@storybook/addon-backgrounds": "^8.4.7",
+    "@storybook/addon-controls": "^8.4.7",
+    "@storybook/addon-docs": "^8.4.7",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-viewport": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
+    "@storybook/test": "^8.4.7",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "storybook": "^8.4.7",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

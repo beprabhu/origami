@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" role="img" aria-label="Zepto">
+  <rect x="0" y="0" width="240" height="80" rx="16" fill="#f9105e"></rect>
+  
+  <path d="M40 18 L26 44 L36 44 L30 62 L48 36 L38 36 L44 18 Z" fill="#ffffff"></path>
+  
+  <text x="64" y="52" font-family="&#39;Zepto Norms&#39;, system-ui, sans-serif" font-weight="900" font-size="38" letter-spacing="-1" fill="#ffffff">zepto</text>
+</svg>

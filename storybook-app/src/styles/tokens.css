@@ -1,0 +1,519 @@
+/**
+ * Zepto Design System — Colors & Type
+ * --------------------------------------------
+ * Canonical CSS variables for Zepto's brand. Values lifted directly from the
+ * Zesto design tokens (tokens/json/1-Base Value.json + 2-Semantics Light.json).
+ *
+ * Zepto's flagship brand color is hot pink (#f9105e). Purple is brand-primary
+ * in semantic tokens (used for "Zepto Pass"/premium); pink is brand-secondary
+ * (used most prominently across consumer UI: CTAs, prices, urgency).
+ *
+ * Usage: import this file once at app entry.
+ *   @import url("./colors_and_type.css");
+ */
+
+/* —— Web fonts (Zepto Norms) —— */
+@font-face {
+  font-family: "Zepto Norms";
+  src: url("./fonts/Zepto_Norms_Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zepto Norms";
+  src: url("./fonts/Zepto_Norms_Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zepto Norms";
+  src: url("./fonts/Zepto_Norms_DemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zepto Norms";
+  src: url("./fonts/Zepto_Norms_Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Zepto Norms";
+  src: url("./fonts/Zepto_Norms_Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ============================================================
+   * BASE COLOR PALETTE
+   * Full 50–900 ramps. Use base tokens only when no semantic
+   * token fits — prefer the semantic tokens below for product UI.
+   * ============================================================ */
+
+  /* Pink — flagship brand color, used on primary CTAs, price tags, urgency */
+  --zd-pink-50:  #fceef2;
+  --zd-pink-100: #fed2e1;
+  --zd-pink-200: #fdaac6;
+  --zd-pink-300: #fc79a6;
+  --zd-pink-400: #fb6094;
+  --zd-pink-500: #fa3778;
+  --zd-pink-600: #f9105e;  /* Zepto pink — the brand */
+  --zd-pink-700: #db064d;  /* pressed / hover */
+  --zd-pink-800: #ae043d;
+  --zd-pink-900: #7c0e32;
+
+  /* Purple — Zepto Pass / premium / "Brand Primary" in semantic tokens */
+  --zd-purple-50:  #faebff;
+  --zd-purple-100: #f2d2fe;
+  --zd-purple-200: #e5aff8;
+  --zd-purple-300: #d580f5;
+  --zd-purple-400: #cf65f5;
+  --zd-purple-500: #bf47eb;
+  --zd-purple-600: #b223e7;
+  --zd-purple-700: #9a16ca;
+  --zd-purple-800: #7312a1;
+  --zd-purple-900: #5f0e7c;
+
+  /* Grey — text, surfaces, borders */
+  --zd-grey-50:  #f3f5f7;
+  --zd-grey-100: #eaedf1;
+  --zd-grey-200: #dfe4ec;
+  --zd-grey-300: #c2c9d6;
+  --zd-grey-400: #8b96a7;
+  --zd-grey-500: #586274;
+  --zd-grey-600: #424957;
+  --zd-grey-700: #2e3642;
+  --zd-grey-800: #1e242e;
+  --zd-grey-900: #101418;
+  --zd-white:    #ffffff;
+  --zd-black:    #000000;
+
+  /* Green — success, "Super Saver", grocery freshness, savings */
+  --zd-green-50:  #e5faec;
+  --zd-green-100: #cef3da;
+  --zd-green-200: #beefcc;
+  --zd-green-300: #a5e8b8;
+  --zd-green-400: #91e3a3;
+  --zd-green-500: #7cd58a;
+  --zd-green-600: #62cb68;
+  --zd-green-700: #42b347;
+  --zd-green-800: #329537;  /* primary success / savings green */
+  --zd-green-900: #26732c;
+
+  /* Grass — Zepto Daily Pass (deep, calm green) */
+  --zd-grass-50:  #eaf6ef;
+  --zd-grass-100: #d2e7db;
+  --zd-grass-200: #c5d9ce;
+  --zd-grass-300: #afcfbd;
+  --zd-grass-400: #80b296;
+  --zd-grass-500: #5a9674;
+  --zd-grass-600: #437c5c;
+  --zd-grass-700: #105d31;
+  --zd-grass-800: #084121;
+  --zd-grass-900: #103520;
+
+  /* Lime — Daily Pass accent (vivid, sun-yellow-green) */
+  --zd-lime-50:  #fffee9;
+  --zd-lime-100: #fffccc;
+  --zd-lime-200: #fff7a2;
+  --zd-lime-300: #fff280;
+  --zd-lime-400: #ffef61;
+  --zd-lime-500: #ffe852;
+  --zd-lime-600: #f9d310;
+  --zd-lime-700: #e4c00c;
+  --zd-lime-800: #bca010;
+  --zd-lime-900: #8d780c;
+
+  /* Royale — premium / Zepto Pass aurora variant */
+  --zd-royale-50:  #efe9fb;
+  --zd-royale-100: #e0d9f2;
+  --zd-royale-200: #c8bae8;
+  --zd-royale-300: #b4a3dc;
+  --zd-royale-400: #967ece;
+  --zd-royale-500: #6b4db2;
+  --zd-royale-600: #543894;
+  --zd-royale-700: #332060;
+  --zd-royale-800: #1f1537;
+  --zd-royale-900: #090611;
+
+  /* Orange — warning / hot deals */
+  --zd-orange-50:  #ffefe4;
+  --zd-orange-100: #fedcc5;
+  --zd-orange-200: #fac6a4;
+  --zd-orange-300: #f8b284;
+  --zd-orange-400: #f79d63;
+  --zd-orange-500: #f58a41;
+  --zd-orange-600: #ee7c30;
+  --zd-orange-700: #de6819;
+  --zd-orange-800: #b9530f;
+  --zd-orange-900: #913e08;
+
+  /* Yellow — caution / promo accents */
+  --zd-yellow-50:  #fef9eb;
+  --zd-yellow-500: #f5b942;
+  --zd-yellow-600: #eea82f;
+  --zd-yellow-700: #e28f12;
+
+  /* Red — error, critical */
+  --zd-red-50:  #ffebeb;
+  --zd-red-100: #fececd;
+  --zd-red-300: #f87d7b;
+  --zd-red-500: #f43936;
+  --zd-red-600: #ed2724;  /* error bold */
+  --zd-red-700: #da1512;
+  --zd-red-900: #8e0604;
+
+  /* Blue — highlight / informational */
+  --zd-blue-50:  #ebf4ff;
+  --zd-blue-100: #cde5fe;
+  --zd-blue-500: #3d96f5;
+  --zd-blue-600: #1681f3;
+  --zd-blue-700: #0b6dd5;
+
+  /* Teal — accent (used in Zepto Cafe / fresh / explore strips) */
+  --zd-teal-50:  #edfafb;
+  --zd-teal-100: #d9f3f6;
+  --zd-teal-500: #6ccfda;
+  --zd-teal-700: #2da3b4;
+  --zd-teal-900: #177582;
+
+  /* Indigo — experiment surfaces (e.g. promo badges) */
+  --zd-indigo-50:  #f3ebff;
+  --zd-indigo-500: #8947eb;
+  --zd-indigo-600: #7224e7;
+
+  /* Alpha overlays */
+  --zd-alpha-dark-4:  #0b0c0e0a;
+  --zd-alpha-dark-8:  #0b0c0e14;
+  --zd-alpha-dark-16: #0b0c0e29;
+  --zd-alpha-dark-25: #0b0c0e40;
+  --zd-alpha-dark-40: #0b0c0e66;
+  --zd-alpha-dark-60: #0b0c0e99;
+  --zd-alpha-dark-75: #0b0c0ebf;
+  --zd-alpha-white-16: #ffffff29;
+  --zd-alpha-white-25: #ffffff40;
+  --zd-alpha-white-50: #ffffff80;
+  --zd-alpha-white-75: #ffffffbf;
+  --zd-alpha-white-90: #ffffffe6;
+
+  /* ============================================================
+   * SEMANTIC COLOR TOKENS (light theme)
+   * Names map to Zesto / Figma `2-Semantics Light.json`.
+   * Always prefer these over base ramps in product UI.
+   * ============================================================ */
+
+  /* — Brand */
+  --zd-brand:                var(--zd-pink-600);
+  --zd-brand-hover:          var(--zd-pink-700);
+  --zd-brand-pressed:        var(--zd-pink-700);
+  --zd-brand-subtle:         var(--zd-pink-50);
+  --zd-brand-on:             var(--zd-white);
+
+  --zd-brand-primary:        var(--zd-purple-700); /* Zepto Pass / premium */
+  --zd-brand-primary-bg:     var(--zd-purple-600);
+  --zd-brand-primary-subtle: var(--zd-purple-50);
+
+  /* — Text */
+  --zd-text:                 var(--zd-grey-900);
+  --zd-text-secondary:       var(--zd-grey-500);
+  --zd-text-tertiary:        var(--zd-grey-400);
+  --zd-text-disabled:        var(--zd-grey-400);
+  --zd-text-on-bold:         var(--zd-white);
+  --zd-text-on-subtle:       var(--zd-alpha-white-75);
+  --zd-text-success:         var(--zd-green-800);   /* "₹26 saved" */
+  --zd-text-warning:         var(--zd-orange-700);
+  --zd-text-error:           var(--zd-red-600);
+  --zd-text-highlight:       var(--zd-blue-700);
+  --zd-text-accent:          var(--zd-teal-900);
+  --zd-text-super-saver:     var(--zd-green-800);
+
+  /* — Surface */
+  --zd-surface:              var(--zd-white);
+  --zd-surface-muted:        var(--zd-grey-50);
+  --zd-surface-tertiary:     var(--zd-grey-100);
+  --zd-surface-dark:         var(--zd-grey-900);
+  --zd-surface-brand:        var(--zd-pink-600);
+  --zd-surface-brand-subtle: var(--zd-pink-50);
+  --zd-surface-success:      var(--zd-green-700);
+  --zd-surface-success-subtle: var(--zd-green-50);
+  --zd-surface-warning:      var(--zd-orange-600);
+  --zd-surface-warning-subtle: var(--zd-orange-50);
+  --zd-surface-error:        var(--zd-red-600);
+  --zd-surface-error-subtle: var(--zd-red-50);
+  --zd-surface-overlay:      var(--zd-alpha-dark-60);
+
+  /* — Border */
+  --zd-border:               var(--zd-grey-200);
+  --zd-border-medium:        var(--zd-grey-300);
+  --zd-border-bold:          var(--zd-grey-500);
+  --zd-border-brand:         var(--zd-pink-600);
+  --zd-border-brand-subtle:  var(--zd-pink-100);
+  --zd-border-success:       var(--zd-green-700);
+  --zd-border-error:         var(--zd-red-600);
+
+  /* — Icons */
+  --zd-icon:                 var(--zd-grey-900);
+  --zd-icon-secondary:       var(--zd-grey-500);
+  --zd-icon-disabled:        var(--zd-grey-400);
+  --zd-icon-brand:           var(--zd-pink-600);
+  --zd-icon-on-bold:         var(--zd-white);
+
+  /* — Sub-brand: Zepto Pass / Royale */
+  --zd-pass-bg:              var(--zd-royale-800);
+  --zd-pass-bg-deep:         var(--zd-royale-900);
+  --zd-pass-text:            var(--zd-royale-100);
+  --zd-pass-accent:          var(--zd-purple-300);
+
+  /* — Sub-brand: Daily Pass */
+  --zd-daily-bg:             var(--zd-grass-900);
+  --zd-daily-accent:         var(--zd-lime-500);
+  --zd-daily-text:           var(--zd-lime-100);
+
+  /* ============================================================
+   * TYPOGRAPHY — base + semantic
+   * Family stack: Zepto Norms is the brand face. The TTFs end
+   * with "-ui" (UI-tuned cuts). Falls back to system sans.
+   * ============================================================ */
+
+  --zd-font-sans: "Zepto Norms", ui-sans-serif, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --zd-font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --zd-fw-regular:  400;
+  --zd-fw-medium:   500;
+  --zd-fw-demi:     600;
+  --zd-fw-bold:     700;
+  --zd-fw-black:    900;
+
+  /* — Heading scale (h48..h14, tight tracking) */
+  --zd-h48-size: 48px;  --zd-h48-lh: 56px;  --zd-h48-tracking: -0.2px;
+  --zd-h32-size: 32px;  --zd-h32-lh: 36px;  --zd-h32-tracking: -0.2px;
+  --zd-h28-size: 28px;  --zd-h28-lh: 32px;  --zd-h28-tracking: -0.2px;
+  --zd-h24-size: 24px;  --zd-h24-lh: 28px;  --zd-h24-tracking: -0.2px;
+  --zd-h20-size: 20px;  --zd-h20-lh: 24px;  --zd-h20-tracking: -0.2px;
+  --zd-h18-size: 18px;  --zd-h18-lh: 22px;  --zd-h18-tracking: -0.2px;
+  --zd-h16-size: 16px;  --zd-h16-lh: 20px;  --zd-h16-tracking: -0.2px;
+  --zd-h14-size: 14px;  --zd-h14-lh: 18px;  --zd-h14-tracking: 0px;
+
+  /* — Body scale */
+  --zd-b16-size: 16px;  --zd-b16-lh: 24px;  --zd-b16-lh-compact: 20px;
+  --zd-b14-size: 14px;  --zd-b14-lh: 20px;  --zd-b14-lh-compact: 16px;
+  --zd-b12-size: 12px;  --zd-b12-lh: 16px;  --zd-b12-lh-compact: 14px;
+  --zd-b10-size: 10px;  --zd-b10-lh: 12px;
+  --zd-b8-size:  8px;   --zd-b8-lh:  10px;
+
+  /* — Action (button labels) */
+  --zd-a18-size: 18px;  --zd-a18-lh: 24px;  --zd-a18-tracking: 0.2px;
+  --zd-a16-size: 16px;  --zd-a16-lh: 24px;  --zd-a16-tracking: 0.2px;
+  --zd-a14-size: 14px;  --zd-a14-lh: 20px;  --zd-a14-tracking: 0.2px;
+  --zd-a12-size: 12px;  --zd-a12-lh: 16px;  --zd-a12-tracking: 0.2px;
+
+  /* — Overline (all caps, tracked) */
+  --zd-o14-size: 14px;  --zd-o14-lh: 16px;  --zd-o14-tracking: 0.5px;
+  --zd-o12-size: 12px;  --zd-o12-lh: 14px;  --zd-o12-tracking: 0.5px;
+  --zd-o10-size: 10px;  --zd-o10-lh: 12px;  --zd-o10-tracking: 0.5px;
+
+  /* ============================================================
+   * SHAPE / SPACING / MOTION
+   * ============================================================ */
+
+  /* Radius — Zepto leans soft: cards 12–16, pills for badges/promos */
+  --zd-radius-xs: 4px;
+  --zd-radius-sm: 6px;
+  --zd-radius-md: 8px;
+  --zd-radius-lg: 12px;
+  --zd-radius-xl: 16px;
+  --zd-radius-2xl: 20px;
+  --zd-radius-pill: 999px;
+
+  /* Spacing — 4px grid */
+  --zd-space-0: 0;
+  --zd-space-1: 4px;
+  --zd-space-2: 8px;
+  --zd-space-3: 12px;
+  --zd-space-4: 16px;
+  --zd-space-5: 20px;
+  --zd-space-6: 24px;
+  --zd-space-7: 32px;
+  --zd-space-8: 40px;
+  --zd-space-9: 48px;
+  --zd-space-10: 64px;
+
+  /* Elevation — soft, pink-tinted ambient on brand surfaces */
+  --zd-shadow-xs: 0 1px 2px 0 rgba(11, 12, 14, 0.04);
+  --zd-shadow-sm: 0 1px 3px 0 rgba(11, 12, 14, 0.06), 0 1px 2px 0 rgba(11, 12, 14, 0.04);
+  --zd-shadow-md: 0 4px 12px -2px rgba(11, 12, 14, 0.08), 0 2px 4px -1px rgba(11, 12, 14, 0.05);
+  --zd-shadow-lg: 0 12px 24px -6px rgba(11, 12, 14, 0.12), 0 4px 8px -2px rgba(11, 12, 14, 0.06);
+  --zd-shadow-xl: 0 20px 40px -8px rgba(11, 12, 14, 0.18);
+  --zd-shadow-brand: 0 8px 20px -4px rgba(249, 16, 94, 0.35);
+  --zd-shadow-card-pop: 0 1px 0 0 rgba(11, 12, 14, 0.06), 0 8px 16px -4px rgba(11, 12, 14, 0.08);
+
+  /* Motion */
+  --zd-dur-fast:    120ms;
+  --zd-dur-normal:  200ms;
+  --zd-dur-slow:    320ms;
+  --zd-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --zd-ease-out:      cubic-bezier(0, 0, 0.2, 1);
+  --zd-ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Focus ring */
+  --zd-focus-ring: 0 0 0 2px var(--zd-surface), 0 0 0 4px var(--zd-brand);
+
+  /* ============================================================
+   * COMPONENT TOKENS — single source of truth
+   * Components MUST consume these, never inline px.
+   * ============================================================ */
+
+  /* Button sizes — height / horizontal padding / radius / text role */
+  --zd-btn-h-xxs: 24px;  --zd-btn-px-xxs: 8px;   --zd-btn-r-xxs: var(--zd-radius-sm);
+  --zd-btn-h-xs:  28px;  --zd-btn-px-xs:  10px;  --zd-btn-r-xs:  var(--zd-radius-sm);
+  --zd-btn-h-sm:  32px;  --zd-btn-px-sm:  12px;  --zd-btn-r-sm:  var(--zd-radius-md);
+  --zd-btn-h-md:  40px;  --zd-btn-px-md:  14px;  --zd-btn-r-md:  var(--zd-radius-md);
+  --zd-btn-h-lg:  48px;  --zd-btn-px-lg:  16px;  --zd-btn-r-lg:  var(--zd-radius-lg);
+  --zd-btn-h-xl:  56px;  --zd-btn-px-xl:  20px;  --zd-btn-r-xl:  var(--zd-radius-lg);
+
+  /* Button text role — XXS/XS/SM = A12, MD = A14, LG/XL = A16 */
+  --zd-btn-text-xxs-size: var(--zd-a12-size);  --zd-btn-text-xxs-lh: var(--zd-a12-lh);
+  --zd-btn-text-xs-size:  var(--zd-a12-size);  --zd-btn-text-xs-lh:  var(--zd-a12-lh);
+  --zd-btn-text-sm-size:  var(--zd-a12-size);  --zd-btn-text-sm-lh:  var(--zd-a12-lh);
+  --zd-btn-text-md-size:  var(--zd-a14-size);  --zd-btn-text-md-lh:  var(--zd-a14-lh);
+  --zd-btn-text-lg-size:  var(--zd-a16-size);  --zd-btn-text-lg-lh:  var(--zd-a16-lh);
+  --zd-btn-text-xl-size:  var(--zd-a16-size);  --zd-btn-text-xl-lh:  var(--zd-a16-lh);
+
+  /* Input — single height per preview (44px) */
+  --zd-input-h:        44px;
+  --zd-input-px:       12px;
+  --zd-input-radius:   10px;
+  --zd-input-text-size: var(--zd-b14-size);
+  --zd-input-text-lh:   var(--zd-b14-lh);
+  --zd-input-label-size: var(--zd-b12-size);
+  --zd-input-label-lh:   var(--zd-b12-lh);
+
+  /* Badge sizes — height / padding / O-tier text */
+  --zd-badge-h-sm: 18px;  --zd-badge-px-sm: 6px;
+  --zd-badge-h-md: 22px;  --zd-badge-px-md: 8px;
+  --zd-badge-h-lg: 26px;  --zd-badge-px-lg: 10px;
+  --zd-badge-text-sm-size: 9px;   --zd-badge-text-sm-lh: 12px;
+  --zd-badge-text-md-size: var(--zd-o10-size);  --zd-badge-text-md-lh: var(--zd-o10-lh);
+  --zd-badge-text-lg-size: 11px;  --zd-badge-text-lg-lh: 14px;
+
+  /* Bottom tab bar */
+  --zd-tabbar-dot-size:   9px;
+}
+
+/* ============================================================
+ * SEMANTIC TYPOGRAPHY UTILITIES
+ * Apply as classes (e.g. <h1 class="zd-h32">).
+ * Mirrors Zesto's `.ds-type-*` naming.
+ * ============================================================ */
+
+.zd-display-48,
+.zd-h48 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h48-size); line-height: var(--zd-h48-lh);
+  letter-spacing: var(--zd-h48-tracking);
+  font-weight: var(--zd-fw-bold);
+}
+
+.zd-h32 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h32-size); line-height: var(--zd-h32-lh);
+  letter-spacing: var(--zd-h32-tracking); font-weight: var(--zd-fw-bold);
+}
+.zd-h28 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h28-size); line-height: var(--zd-h28-lh);
+  letter-spacing: var(--zd-h28-tracking); font-weight: var(--zd-fw-bold);
+}
+.zd-h24 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h24-size); line-height: var(--zd-h24-lh);
+  letter-spacing: var(--zd-h24-tracking); font-weight: var(--zd-fw-bold);
+}
+.zd-h20 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h20-size); line-height: var(--zd-h20-lh);
+  letter-spacing: var(--zd-h20-tracking); font-weight: var(--zd-fw-bold);
+}
+.zd-h18 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h18-size); line-height: var(--zd-h18-lh);
+  letter-spacing: var(--zd-h18-tracking); font-weight: var(--zd-fw-demi);
+}
+.zd-h16 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h16-size); line-height: var(--zd-h16-lh);
+  letter-spacing: var(--zd-h16-tracking); font-weight: var(--zd-fw-demi);
+}
+.zd-h14 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-h14-size); line-height: var(--zd-h14-lh);
+  font-weight: var(--zd-fw-demi);
+}
+
+.zd-b16 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b16-size); line-height: var(--zd-b16-lh);
+  font-weight: var(--zd-fw-regular);
+}
+.zd-b14 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b14-size); line-height: var(--zd-b14-lh);
+  font-weight: var(--zd-fw-regular);
+}
+.zd-b12 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b12-size); line-height: var(--zd-b12-lh);
+  font-weight: var(--zd-fw-regular);
+}
+.zd-b10 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh);
+  font-weight: var(--zd-fw-regular);
+}
+.zd-b8 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b8-size); line-height: var(--zd-b8-lh);
+  font-weight: var(--zd-fw-regular);
+}
+
+.zd-a16 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-a16-size); line-height: var(--zd-a16-lh);
+  letter-spacing: var(--zd-a16-tracking); font-weight: var(--zd-fw-demi);
+}
+.zd-a14 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-a14-size); line-height: var(--zd-a14-lh);
+  letter-spacing: var(--zd-a14-tracking); font-weight: var(--zd-fw-demi);
+}
+.zd-a12 {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-a12-size); line-height: var(--zd-a12-lh);
+  letter-spacing: var(--zd-a12-tracking); font-weight: var(--zd-fw-demi);
+}
+
+.zd-overline {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-o12-size); line-height: var(--zd-o12-lh);
+  letter-spacing: var(--zd-o12-tracking);
+  font-weight: var(--zd-fw-demi);
+  text-transform: uppercase;
+}
+
+/* Page baseline */
+body {
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b14-size);
+  line-height: var(--zd-b14-lh);
+  color: var(--zd-text);
+  background: var(--zd-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,44 @@
+/**
+ * Global baseline. Tokens.css owns variables + utility classes.
+ * This file owns reset + base body type.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--zd-surface);
+  color: var(--zd-text);
+  font-family: var(--zd-font-sans);
+  font-size: var(--zd-b14-size);
+  line-height: var(--zd-b14-lh);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+  font-feature-settings: inherit;
+}
+
+a {
+  color: var(--zd-brand);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--zd-brand-hover);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}

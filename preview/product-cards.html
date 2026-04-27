@@ -1,0 +1,171 @@
+<!DOCTYPE html><html><head>
+
+<meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
+  body { margin:0; padding:24px; background:var(--zd-grey-50); font-family:var(--zd-font-sans); }
+  .grid { display:grid; grid-template-columns: repeat(3, 168px); gap: 12px; }
+
+  .card { display:flex; flex-direction:column; gap:6px; font-family:var(--zd-font-sans); }
+
+  /* Card Header — image + badges + ADD */
+  .header {
+    position:relative; border-radius:8px; overflow:hidden;
+    background: var(--zd-grey-50);
+    border: 0.5px solid var(--zd-grey-200);
+  }
+  .img {
+    aspect-ratio:1; background:#fff;
+    border-bottom: 0.5px solid var(--zd-grey-200);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .swatch { width:36px; height:36px; border-radius:8px; opacity:0.55; }
+
+  .heart { position:absolute; top:3px; right:3px; }
+
+  .info-label {
+    position:absolute; top:0; left:0; height:16px;
+    display:inline-flex; align-items:center; padding: 2px 4px;
+    background: var(--zd-orange-50);
+    border: 0.5px solid var(--zd-orange-100);
+    color: var(--zd-orange-800);
+    font-size: var(--zd-b8-size); line-height: var(--zd-b8-lh);
+    font-weight: var(--zd-fw-medium);
+    border-radius: 6px 1px 4px 1px;
+  }
+
+  .quantity-row {
+    display:flex; align-items:flex-end; justify-content:space-between;
+    padding: 6px; color: var(--zd-grey-900);
+    font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh);
+  }
+  .quantity-row .qty { font-weight: var(--zd-fw-demi); }
+  .quantity-row .unit { font-weight: var(--zd-fw-medium); }
+
+  /* ADD button — tracks the SM button token (32h, A12 text) */
+  .add {
+    position:absolute; bottom:4px; right:4px;
+    width:56px; height: var(--zd-btn-h-sm); padding: 0;
+    background:#fff;
+    border: 0.75px solid var(--zd-pink-600);
+    box-shadow: 1px 1px 0 0 var(--zd-pink-600);
+    color: var(--zd-pink-600);
+    font-family: inherit; font-weight: var(--zd-fw-demi);
+    font-size: var(--zd-a12-size); line-height: var(--zd-a12-lh);
+    letter-spacing: var(--zd-a12-tracking);
+    border-radius: var(--zd-radius-md); cursor:pointer;
+  }
+
+  /* Card Body */
+  .body { display:flex; flex-direction:column; gap:4px; padding: 0 2px; }
+  .price-row { display:flex; flex-wrap:wrap; align-items:baseline; gap: 4px 8px; padding-bottom: 2px; }
+  .stamp {
+    display:inline-flex; align-items:baseline;
+    background: var(--zd-green-800); color:#fff;
+    border: 0.5px solid var(--zd-grass-800);
+    box-shadow: 1.5px 1.5px 0 0 var(--zd-grass-800);
+    padding: 4px 6px 2px; border-radius: 6px;
+  }
+  .stamp .ru  { font-size: var(--zd-b12-size); font-weight: var(--zd-fw-demi); line-height: 14px; }
+  .stamp .num { font-size: var(--zd-b14-size); font-weight: var(--zd-fw-bold); line-height: 16px; }
+  .mrp { font-size: var(--zd-b12-size); line-height: 14px; color: var(--zd-grey-400); text-decoration: line-through; }
+
+  .savings { display:flex; align-items:center; gap: 4px; padding-top: 2px; }
+  .savings .off {
+    font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh);
+    font-weight: var(--zd-fw-bold); color: var(--zd-green-800);
+  }
+  .savings .dash { flex:1; height: 1px; border-top: 1px dashed var(--zd-grey-200); }
+
+  .title {
+    font-size: var(--zd-b12-size); line-height: 14px;
+    font-weight: var(--zd-fw-medium); color: var(--zd-grey-900);
+    overflow:hidden; text-overflow:ellipsis;
+    display:-webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    margin: 0; min-height: 28px;
+  }
+
+  .attrs { display:flex; gap:4px; padding: 4px 0; flex-wrap: wrap; }
+  .tag {
+    display:inline-flex; align-items:center;
+    background: rgba(11,12,14,0.04);
+    border: 0.5px solid var(--zd-grey-200);
+    padding: 2px 4px; min-height: 18px; border-radius: 4px;
+    font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh);
+    font-weight: var(--zd-fw-demi); color: var(--zd-grey-600);
+  }
+
+  .rating-eta { display:flex; align-items:center; gap:3px; }
+  .rating {
+    display:inline-flex; align-items:center; gap: 2px;
+    padding: 1px 6px 1px 2px;
+    background: linear-gradient(to right, var(--zd-green-50), rgba(255,255,255,0.16));
+    border-radius: 20px 0 0 20px;
+  }
+  .rating .v { font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh); color: var(--zd-green-800); font-weight: var(--zd-fw-medium); }
+  .rating .c { font-size: var(--zd-b10-size); line-height: var(--zd-b10-lh); color: var(--zd-grey-500); }
+</style></head><body>
+<div class="grid">
+  <div class="card">
+    <div class="header">
+      <div class="img"><div class="swatch" style="background:#f9b9d0"></div></div>
+      <svg class="heart" width="14" height="14" viewBox="0 0 256 256" fill="#fff" stroke="var(--zd-grey-300)" stroke-width="6"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
+      <div class="info-label">Best Value</div>
+      <div class="quantity-row"><span class="qty">84 pcs</span><span class="unit">₹7.5/ pc</span></div>
+      <button class="add">ADD</button>
+    </div>
+    <div class="body">
+      <div class="price-row">
+        <div class="stamp"><span class="ru">₹</span><span class="num">510</span></div>
+        <span class="mrp">₹949</span>
+      </div>
+      <div class="savings"><span class="off">₹24 OFF</span><span class="dash"></span></div>
+      <p class="title">TEDDYY Baby Easy Pant Diapers 74 Count (M) 7-12 kgs</p>
+      <div class="attrs"><span class="tag">M</span><span class="tag">7 - 12 kg</span></div>
+      <div class="rating-eta"><span class="rating">
+        <svg width="10" height="10" viewBox="0 0 256 256" fill="var(--zd-green-800)"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+        <span class="v">4.5</span><span class="c">(928)</span>
+      </span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="header">
+      <div class="img"><div class="swatch" style="background:#bcd9ec"></div></div>
+      <svg class="heart" width="14" height="14" viewBox="0 0 256 256" fill="#fff" stroke="var(--zd-grey-300)" stroke-width="6"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
+      <div class="info-label" style="background:var(--zd-green-50);border-color:var(--zd-green-200);color:var(--zd-green-800)">Super Saver</div>
+      <div class="quantity-row"><span class="qty">500 ml</span><span class="unit">₹54/ L</span></div>
+      <button class="add">ADD</button>
+    </div>
+    <div class="body">
+      <div class="price-row">
+        <div class="stamp"><span class="ru">₹</span><span class="num">27</span></div>
+        <span class="mrp">₹30</span>
+      </div>
+      <div class="savings"><span class="off">₹3 OFF</span><span class="dash"></span></div>
+      <p class="title">Amul Taaza Toned Milk Pouch</p>
+      <div class="rating-eta"><span class="rating">
+        <svg width="10" height="10" viewBox="0 0 256 256" fill="var(--zd-green-800)"><path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z"></path></svg>
+        <span class="v">4.6</span><span class="c">(2.3k)</span>
+      </span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="header">
+      <div class="img"><div class="swatch" style="background:#f0d96a"></div></div>
+      <svg class="heart" width="14" height="14" viewBox="0 0 256 256" fill="#fff" stroke="var(--zd-grey-300)" stroke-width="6"><path d="M178,40c-20.65,0-38.73,8.88-50,23.89C116.73,48.88,98.65,40,78,40a62.07,62.07,0,0,0-62,62c0,70,103.79,126.66,108.21,129a8,8,0,0,0,7.58,0C136.21,228.66,240,172,240,102A62.07,62.07,0,0,0,178,40ZM128,214.8C109.74,204.16,32,155.69,32,102A46.06,46.06,0,0,1,78,56c19.45,0,35.78,10.36,42.6,27a8,8,0,0,0,14.8,0c6.82-16.67,23.15-27,42.6-27a46.06,46.06,0,0,1,46,46C224,155.61,146.24,204.15,128,214.8Z"></path></svg>
+      <div class="quantity-row"><span class="qty">1 kg</span><span class="unit">₹52/ kg</span></div>
+      <button class="add">ADD</button>
+    </div>
+    <div class="body">
+      <div class="price-row">
+        <div class="stamp"><span class="ru">₹</span><span class="num">52</span></div>
+        <span class="mrp">₹70</span>
+      </div>
+      <div class="savings"><span class="off">₹18 OFF</span><span class="dash"></span></div>
+      <p class="title">Banana Robusta — Loose, fresh &amp; ripe</p>
+      <div class="attrs"><span class="tag">1 kg</span><span class="tag">6–7 pcs</span></div>
+    </div>
+  </div>
+</div>
+
+</body></html>

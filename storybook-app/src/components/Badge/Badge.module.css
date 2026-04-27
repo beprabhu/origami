@@ -1,0 +1,97 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--zd-font-sans);
+  font-weight: var(--zd-fw-demi);
+  white-space: nowrap;
+  border-radius: var(--zd-radius-pill);
+  border: 1px solid transparent;
+}
+
+/* ─── Sizes ─── */
+.sm {
+  height: var(--zd-badge-h-sm);
+  padding: 0 var(--zd-badge-px-sm);
+  font-size: var(--zd-badge-text-sm-size);
+  line-height: var(--zd-badge-text-sm-lh);
+  letter-spacing: 0.5px;
+}
+.md {
+  height: var(--zd-badge-h-md);
+  padding: 0 var(--zd-badge-px-md);
+  font-size: var(--zd-badge-text-md-size);
+  line-height: var(--zd-badge-text-md-lh);
+  letter-spacing: var(--zd-o10-tracking);
+}
+.lg {
+  height: var(--zd-badge-h-lg);
+  padding: 0 var(--zd-badge-px-lg);
+  font-size: var(--zd-badge-text-lg-size);
+  line-height: var(--zd-badge-text-lg-lh);
+  letter-spacing: 0.4px;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* ─── Tones ─── */
+.brand {
+  background: var(--zd-brand);
+  color: var(--zd-brand-on);
+}
+.brandSubtle {
+  background: var(--zd-brand-subtle);
+  color: var(--zd-brand);
+}
+.success {
+  background: var(--zd-green-700);
+  color: var(--zd-white);
+}
+.successSubtle {
+  background: var(--zd-green-50);
+  color: var(--zd-text-success);
+}
+.warning {
+  background: var(--zd-orange-600);
+  color: var(--zd-white);
+}
+.warningSubtle {
+  background: var(--zd-orange-50);
+  color: var(--zd-orange-800);
+}
+.error {
+  background: var(--zd-red-600);
+  color: var(--zd-white);
+}
+.errorSubtle {
+  background: var(--zd-red-50);
+  color: var(--zd-red-700);
+}
+.neutral {
+  background: var(--zd-grey-900);
+  color: var(--zd-white);
+}
+.neutralSubtle {
+  background: var(--zd-grey-100);
+  color: var(--zd-grey-700);
+}
+.info {
+  background: var(--zd-blue-700);
+  color: var(--zd-white);
+}
+.infoSubtle {
+  background: var(--zd-blue-50);
+  color: var(--zd-blue-700);
+}
+
+/* Outline variant — solid white fill, colored stroke */
+.outline {
+  background: var(--zd-surface);
+}
+.outline.brand { color: var(--zd-brand); border-color: var(--zd-brand); }
+.outline.success { color: var(--zd-text-success); border-color: var(--zd-green-700); background: var(--zd-surface); }
+.outline.warning { color: var(--zd-orange-800); border-color: var(--zd-orange-600); background: var(--zd-surface); }
+.outline.error { color: var(--zd-red-700); border-color: var(--zd-red-600); background: var(--zd-surface); }
+.outline.neutral { color: var(--zd-grey-700); border-color: var(--zd-grey-300); background: var(--zd-surface); }

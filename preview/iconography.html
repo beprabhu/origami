@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    padding: 24px 28px 32px;
+    background: #fff;
+    font-family: var(--zd-font-sans);
+    color: var(--zd-text);
+  }
+  h2 {
+    font: var(--zd-o12-weight) var(--zd-o12-size) / var(--zd-o12-lh) var(--zd-font-sans);
+    letter-spacing: var(--zd-o12-tracking);
+    text-transform: uppercase;
+    color: var(--zd-text-tertiary);
+    margin: 0 0 14px;
+  }
+  h2:not(:first-child) { margin-top: 28px; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 18px 14px;
+  }
+  .cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 6px;
+    border-radius: var(--zd-radius-md, 8px);
+  }
+  .cell svg { color: var(--zd-text); display: block; }
+  .cell span {
+    font: var(--zd-b10-weight) var(--zd-b10-size) / var(--zd-b10-lh) var(--zd-font-sans);
+    color: var(--zd-text-tertiary);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h2>Regular · default for all UI surfaces</h2>
+<div class="grid" data-weight="regular"></div>
+
+<h2>Bold · emphasis, primary actions, alerts</h2>
+<div class="grid" data-weight="bold"></div>
+
+<h2>Fill · selected tab states, badges, indicators</h2>
+<div class="grid" data-weight="fill"></div>
+
+<script>
+const NAMES = ['house','magnifying-glass','shopping-cart','user','list','x','arrow-left','caret-right','caret-down','tag','fire','star','heart','plus','minus','trash','check','wallet','ticket','receipt','package','map-pin','clock','truck','lightning','warning','check-circle','x-circle','info','bell','sliders-horizontal','share-fat'];
+
+async function load() {
+  const res = await fetch('../icons-data.json');
+  const data = await res.json();
+  document.querySelectorAll('.grid').forEach(grid => {
+    const w = grid.dataset.weight;
+    const frag = document.createDocumentFragment();
+    NAMES.forEach(n => {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.innerHTML =
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" width="24" height="24" aria-hidden>${data[w][n]}</svg>` +
+        `<span>${n}</span>`;
+      frag.appendChild(cell);
+    });
+    grid.appendChild(frag);
+  });
+}
+load();
+</script>
+
+</body>
+</html>

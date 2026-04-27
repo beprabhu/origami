@@ -1,0 +1,103 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zd-space-2);
+  font-family: var(--zd-font-sans);
+}
+
+.label {
+  font-size: var(--zd-b12-size);
+  line-height: var(--zd-b12-lh);
+  font-weight: var(--zd-fw-demi);
+  color: var(--zd-text);
+}
+
+.required {
+  color: var(--zd-text-error);
+  margin-left: 2px;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--zd-input-h);
+  background: var(--zd-surface);
+  border: 1px solid var(--zd-border);
+  border-radius: var(--zd-input-radius);
+  transition:
+    border-color var(--zd-dur-fast) var(--zd-ease-standard),
+    box-shadow var(--zd-dur-fast) var(--zd-ease-standard);
+}
+
+.wrapper:hover:not(.disabled) {
+  border-color: var(--zd-border-medium);
+}
+
+.wrapper.focused {
+  border-color: var(--zd-brand);
+  box-shadow: 0 0 0 3px var(--zd-brand-subtle);
+}
+
+.wrapper.error {
+  border-color: var(--zd-border-error);
+}
+.wrapper.error.focused {
+  box-shadow: 0 0 0 3px var(--zd-red-50);
+}
+
+.wrapper.disabled {
+  background: var(--zd-grey-50);
+  cursor: not-allowed;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 var(--zd-input-px);
+  font-family: inherit;
+  font-size: var(--zd-input-text-size);
+  line-height: var(--zd-input-text-lh);
+  color: var(--zd-text);
+  min-width: 0;
+}
+
+.input::placeholder {
+  color: var(--zd-text-tertiary);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  color: var(--zd-text-disabled);
+}
+
+.affix {
+  display: flex;
+  align-items: center;
+  color: var(--zd-text-tertiary);
+  padding: 0 var(--zd-input-px);
+}
+
+.leftAffix {
+  padding-right: 0;
+}
+
+.rightAffix {
+  padding-left: 0;
+}
+
+.helper {
+  font-size: var(--zd-b12-size);
+  line-height: var(--zd-b12-lh);
+  color: var(--zd-text-secondary);
+}
+
+.helper.errorText {
+  color: var(--zd-text-error);
+}
+
+/* Single size — preview standard (44h). md/sm/lg kept as aliases for back-compat. */
+.sm, .md, .lg { /* no-op — height comes from .wrapper */ }
