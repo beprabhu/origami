@@ -1,0 +1,64 @@
+/* Origami BottomTabBar — sticky bottom navigation. */
+
+.zd-tabbar {
+  background: var(--zd-surface);
+  border-top: 1px solid var(--zd-border);
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0 6px;
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  font-family: var(--zd-font-sans);
+}
+
+.zd-tabbar__tab {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--zd-text-secondary);
+  font-family: inherit;
+  padding: 4px 12px;
+  position: relative;
+  min-width: 56px;
+  transition: color var(--zd-dur-fast) var(--zd-ease-standard);
+}
+
+.zd-tabbar__tab:hover {
+  color: var(--zd-text-primary);
+}
+
+.zd-tabbar__tab--active {
+  color: var(--zd-brand);
+}
+
+.zd-tabbar__label {
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
+  font-weight: var(--zd-fw-medium);
+}
+
+.zd-tabbar__tab--active .zd-tabbar__label {
+  font-weight: var(--zd-fw-bold);
+}
+
+.zd-tabbar__badge {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  background: var(--zd-brand);
+  color: var(--zd-white);
+  font-size: var(--zd-tabbar-dot-size);
+  font-weight: var(--zd-fw-bold);
+  border-radius: var(--zd-radius-pill);
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}

@@ -1,0 +1,265 @@
+/* Origami ProductCard — single source consumed by Storybook AND preview/product-card.html.
+ * Class names are global; all prefixed `.zd-pcard`. Token-driven; no standalone colors.
+ *
+ * Composition:
+ *   <article class="zd-pcard">
+ *     ├── <div class="zd-pcard__header">          (image area, grey-50 frame)
+ *     │     ├── .zd-pcard__pill                   (left-top "Best Value" — Badge)
+ *     │     ├── .zd-pcard__heart                  (right-top wishlist)
+ *     │     ├── .zd-pcard__image                  (square product image)
+ *     │     ├── .zd-pcard__quantity               (bottom row "84 pcs · ₹7.5/pc")
+ *     │     └── .zd-pcard__add                    (floating ADD button)
+ *     └── <div class="zd-pcard__body">
+ *           ├── .zd-pcard__price                  (SP chip + struck-out MRP)
+ *           ├── .zd-pcard__savings                (₹24 OFF + dashed divider)
+ *           ├── .zd-pcard__title
+ *           ├── .zd-pcard__tags                   (M / 7-12 kg)
+ *           └── .zd-pcard__rating                 (★ 4.5 (928))
+ */
+
+.zd-pcard {
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--zd-space-2);
+  font-family: var(--zd-font-sans);
+  color: var(--zd-text-primary);
+}
+
+/* ─── Header (image frame) ─── */
+.zd-pcard__header {
+  position: relative;
+  background: var(--zd-surface-secondary);
+  border: 0.5px solid var(--zd-border-default);
+  border-radius: var(--zd-radius-md);
+  overflow: hidden;
+}
+
+.zd-pcard__image {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--zd-surface-primary);
+  border-bottom: 0.5px solid var(--zd-border-default);
+  overflow: hidden;
+}
+.zd-pcard__image img,
+.zd-pcard__image > svg,
+.zd-pcard__image > .zd-pcard__image-placeholder {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.zd-pcard__image-placeholder {
+  background: var(--zd-surface-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--zd-text-tertiary);
+}
+
+/* "Best Value" pill at top-left, asymmetric corner radius like ribbons */
+.zd-pcard__pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  /* Badge styling will come from <Badge> component when used in TSX/HTML.
+     This block only positions it. */
+  border-top-left-radius: var(--zd-radius-sm);
+  border-bottom-right-radius: var(--zd-radius-xs);
+}
+
+/* Wishlist heart at top-right */
+.zd-pcard__heart {
+  position: absolute;
+  top: var(--zd-space-1);
+  right: var(--zd-space-1);
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--zd-surface-primary);
+  border-radius: var(--zd-radius-pill);
+  color: var(--zd-grey-300);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.zd-pcard__heart svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+.zd-pcard__heart--active {
+  color: var(--zd-icon-brand-secondary);
+}
+
+/* Quantity row beneath the image (84 pcs · ₹7.5/pc) */
+.zd-pcard__quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--zd-space-1) var(--zd-space-2) var(--zd-space-1) var(--zd-space-2);
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
+  color: var(--zd-text-primary);
+}
+.zd-pcard__quantity-count {
+  font-weight: var(--zd-fw-demi);
+}
+.zd-pcard__quantity-rate {
+  font-weight: var(--zd-fw-medium);
+}
+
+/* Floating ADD button — positioned over the image, bottom-right of image area */
+.zd-pcard__add {
+  position: absolute;
+  /* Sit just above the quantity strip; the strip is ~24px tall, image ends above. */
+  right: var(--zd-space-1);
+  bottom: 28px;
+  z-index: 3;
+}
+
+/* ─── Body ─── */
+.zd-pcard__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zd-space-1);
+  padding: 0 2px;
+}
+
+/* Price row */
+.zd-pcard__price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--zd-space-1) var(--zd-space-2);
+  padding-bottom: 2px;
+}
+
+/* Super-Saver-style price chip (deep green block, white "₹510") */
+.zd-pcard__sp {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+  padding: 3px var(--zd-space-2) 2px;
+  background: var(--zd-surface-super-saver);
+  color: var(--zd-text-on-surface-bold);
+  border: 0.5px solid var(--zd-grass-800);
+  border-radius: var(--zd-radius-sm);
+  /* Subtle drop "stamp" — matches the Figma's offset 1.5px shadow */
+  box-shadow: 1.5px 1.5px 0 0 var(--zd-grass-800);
+  font-family: var(--zd-font-sans);
+}
+.zd-pcard__sp-rupee {
+  font-size: var(--zd-b12-size);
+  line-height: 14px;
+  font-weight: var(--zd-fw-demi);
+}
+.zd-pcard__sp-amount {
+  font-size: var(--zd-h14-size);
+  line-height: var(--zd-h14-lh);
+  font-weight: var(--zd-fw-bold);
+}
+
+/* MRP — struck through, tertiary */
+.zd-pcard__mrp {
+  font-size: var(--zd-b12-size);
+  line-height: 14px;
+  font-weight: var(--zd-fw-regular);
+  color: var(--zd-text-tertiary);
+  text-decoration: line-through;
+  text-decoration-skip-ink: none;
+}
+
+/* Savings row: "₹24 OFF" + dashed divider */
+.zd-pcard__savings {
+  display: flex;
+  align-items: center;
+  gap: var(--zd-space-1);
+  padding-top: 2px;
+}
+.zd-pcard__savings-amount {
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
+  font-weight: var(--zd-fw-bold);
+  color: var(--zd-text-success-bold);
+  white-space: nowrap;
+}
+.zd-pcard__savings-divider {
+  flex: 1;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    var(--zd-border-default) 0 4px,
+    transparent 4px 8px
+  );
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+}
+
+/* Title (clamped to 2 lines) */
+.zd-pcard__title {
+  font-size: var(--zd-b12-size);
+  line-height: 14px;
+  font-weight: var(--zd-fw-medium);
+  color: var(--zd-text-primary);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Attribute tags row */
+.zd-pcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--zd-space-1);
+  padding: var(--zd-space-1) 0;
+}
+
+/* Rating chip — leading green pill that fades to transparent */
+.zd-pcard__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 1px var(--zd-space-3) 1px 2px;
+  background: linear-gradient(
+    to right,
+    var(--zd-green-50) 0%,
+    var(--zd-green-50) 40%,
+    transparent 100%
+  );
+  border-top-left-radius: var(--zd-radius-pill);
+  border-bottom-left-radius: var(--zd-radius-pill);
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
+}
+.zd-pcard__rating-star {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  color: var(--zd-icon-success-bold);
+  flex-shrink: 0;
+}
+.zd-pcard__rating-star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+.zd-pcard__rating-score {
+  font-weight: var(--zd-fw-medium);
+  color: var(--zd-text-success-bold);
+}
+.zd-pcard__rating-count {
+  color: var(--zd-text-secondary);
+}

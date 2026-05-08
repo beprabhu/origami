@@ -22,10 +22,9 @@ storybook-app/
 │   │   └── fonts/       Zepto Norms (woff)
 │   ├── tokens.ts        JS mirror of tokens.css for programmatic use
 │   ├── components/
-│   │   ├── Button/      Button.tsx + Button.module.css + Button.stories.tsx
+│   │   ├── Button/      Button.tsx + Button.css + Button.stories.tsx
 │   │   ├── Input/
 │   │   ├── Badge/
-│   │   ├── ProductCard/ ProductCard + ProductGrid
 │   │   ├── Header/
 │   │   ├── BottomTabBar/
 │   │   └── icons.tsx
@@ -42,8 +41,6 @@ storybook-app/
 - ✅ `Button` — 6 variants × 6 sizes, loading, fullWidth, left/right icons
 - ✅ `Input` — label, helper, error, required, 3 sizes, left/right addons
 - ✅ `Badge` — 6 tones × 3 variants × 3 sizes, optional icon, uppercase toggle
-- ✅ `ProductCard` — full Zepto M-Product Card with stamp price + stepper
-- ✅ `ProductGrid` — controlled grid of ProductCards
 - ✅ `Header` — sticky app header (ETA, address, search)
 - ✅ `BottomTabBar` — primary mobile nav with badge support
 

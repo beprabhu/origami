@@ -1,0 +1,105 @@
+/* Origami Badge — single source consumed by Storybook AND preview/badges.html.
+ * Class names are global; all prefixed `.zd-badge`. */
+
+.zd-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--zd-font-sans);
+  font-weight: var(--zd-fw-demi);
+  white-space: nowrap;
+  border-radius: 4px;
+  border: 0.5px solid transparent;
+}
+
+/* ─── Sizes ─── */
+.zd-badge--sm {
+  height: var(--zd-badge-h-sm);
+  padding: 0 var(--zd-badge-px-sm);
+  font-size: var(--zd-badge-text-sm-size);
+  line-height: var(--zd-badge-text-sm-lh);
+  letter-spacing: 0.5px;
+}
+.zd-badge--md {
+  height: 18px;
+  padding: 0 4px;
+  font-size: var(--zd-b10-size);
+  line-height: var(--zd-b10-lh);
+}
+.zd-badge--lg {
+  height: var(--zd-badge-h-lg);
+  padding: 0 var(--zd-badge-px-lg);
+  font-size: var(--zd-badge-text-lg-size);
+  line-height: var(--zd-badge-text-lg-lh);
+  letter-spacing: 0.4px;
+}
+
+.zd-badge--uppercase {
+  text-transform: uppercase;
+}
+
+/* ─── Tones (solid) ─── */
+.zd-badge--brand {
+  background: var(--zd-surface-brand-secondary-bold);
+  color: var(--zd-text-on-surface-bold);
+}
+.zd-badge--success {
+  background: var(--zd-surface-success-bold);
+  color: var(--zd-text-on-surface-bold);
+}
+.zd-badge--warning {
+  background: var(--zd-surface-warning-bold);
+  color: var(--zd-text-on-surface-bold);
+}
+.zd-badge--featureTag {
+  background: var(--zd-surface-error-bold);
+  color: var(--zd-text-on-surface-bold);
+}
+.zd-badge--neutral {
+  background: var(--zd-surface-primary-dark);
+  color: var(--zd-text-on-surface-bold);
+}
+.zd-badge--info {
+  background: var(--zd-surface-highlight-bold);
+  color: var(--zd-text-on-surface-bold);
+}
+
+/* ─── Tones (subtle) ─── */
+.zd-badge--brandSubtle {
+  background: var(--zd-surface-brand-secondary-subtle);
+  color: var(--zd-text-brand-secondary);
+}
+.zd-badge--successSubtle {
+  background: var(--zd-surface-success-subtle);
+  color: var(--zd-text-success-bold);
+}
+.zd-badge--warningSubtle {
+  background: var(--zd-surface-warning-subtle);
+  color: var(--zd-text-warning-bold);
+}
+.zd-badge--featureTagSubtle {
+  background: var(--zd-surface-error-subtle);
+  color: var(--zd-text-error-bold);
+}
+.zd-badge--neutralSubtle {
+  background: var(--zd-surface-tertiary);
+  color: var(--zd-text-primary-subtle);
+}
+.zd-badge--infoSubtle {
+  background: var(--zd-surface-highlight-subtle);
+  color: var(--zd-text-highlight-bold);
+}
+
+/* ─── Outline variant — solid white fill, colored stroke ─── */
+.zd-badge--outline {
+  background: var(--zd-surface-primary);
+}
+.zd-badge--outline.zd-badge--brand    { color: var(--zd-text-brand-secondary); border-color: var(--zd-border-brand-secondary-bold); }
+.zd-badge--outline.zd-badge--success  { color: var(--zd-text-success-bold);    border-color: var(--zd-border-success-bold); }
+.zd-badge--outline.zd-badge--warning  { color: var(--zd-text-warning-bold);    border-color: var(--zd-border-warning-bold); }
+.zd-badge--outline.zd-badge--featureTag {
+  color: var(--zd-grey-700);
+  border-color: var(--zd-grey-200);
+  background: var(--zd-surface-tertiary);
+}
+.zd-badge--outline.zd-badge--neutral  { color: var(--zd-text-primary-subtle); border-color: var(--zd-border-medium); }

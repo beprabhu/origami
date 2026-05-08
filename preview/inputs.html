@@ -1,20 +1,29 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
-body{margin:0;padding:24px;background:#fff;font-family:var(--zd-font-sans)}
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-label{font-size:var(--zd-input-label-size);line-height:var(--zd-input-label-lh);color:var(--zd-text-primary);font-weight:var(--zd-fw-demi)}
-input,select{
-  height:var(--zd-input-h);padding:0 var(--zd-input-px);
-  border:1px solid var(--zd-border);border-radius:var(--zd-input-radius);
-  font-family:inherit;font-size:var(--zd-input-text-size);line-height:var(--zd-input-text-lh);
-  color:var(--zd-text-primary);background:#fff;outline:none;
-  transition:border-color var(--zd-dur-fast) var(--zd-ease-standard),box-shadow var(--zd-dur-fast) var(--zd-ease-standard);
-}
-input:focus,select:focus{border-color:var(--zd-brand);box-shadow:0 0 0 3px var(--zd-brand-subtle)}
-input.error{border-color:var(--zd-border-error)}
-.helper{font-size:var(--zd-b12-size);line-height:var(--zd-b12-lh);color:var(--zd-text-secondary)}
-.helper.err{color:var(--zd-text-error-bold)}
-</style></head><body>
-<div class="field"><label>Mobile number</label><input value="+91 98 765 4321"></div>
-<div class="field"><label>Pincode</label><input class="error" value="40005"><div class="helper err">Enter a valid 6-digit pincode</div></div>
-<div class="field"><label>Delivery slot</label><select><option>Express · 10 min</option><option>Scheduled · today</option></select></div>
-</body></html>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../storybook-app/src/styles/tokens.css">
+<link rel="stylesheet" href="../storybook-app/src/components/Input/Input.css">
+<style>
+  body { margin: 0; padding: 24px; background: #fff; font-family: var(--zd-font-sans); }
+  .zd-input-field { margin-bottom: 14px; }
+</style>
+</head>
+<body>
+  <div class="zd-input-field">
+    <label class="zd-input__label">Mobile number</label>
+    <div class="zd-input"><input class="zd-input__control" value="+91 98 765 4321"></div>
+  </div>
+  <div class="zd-input-field">
+    <label class="zd-input__label">Pincode</label>
+    <div class="zd-input zd-input--error"><input class="zd-input__control" value="40005"></div>
+    <span class="zd-input__helper zd-input__helper--error">Enter a valid 6-digit pincode</span>
+  </div>
+  <div class="zd-input-field">
+    <label class="zd-input__label">Delivery slot</label>
+    <div class="zd-input">
+      <select class="zd-input__control"><option>Express · 10 min</option><option>Scheduled · today</option></select>
+    </div>
+  </div>
+</body>
+</html>

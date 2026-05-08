@@ -59,11 +59,10 @@ assume the reader has access — they're recorded in case you do.
 | Path | What it is |
 |---|---|
 | `README.md` | This file. Brand overview, content & visual foundations, manifest. |
-| `colors_and_type.css` | Canonical CSS variables for color, type, spacing, radius, motion. Import once at the top of any artifact. |
+| `storybook-app/src/styles/tokens.css` | **Canonical CSS variables** for color, type, spacing, radius, motion. Single source of truth — both Storybook and `preview/*.html` link this file directly. |
 | `fonts/` | Zepto Norms web fonts (`.woff` weights 400/500/600/700/900) and the uploaded `-ui` TTFs. |
 | `assets/` | Brand assets — logos, generic illustrations, sample imagery placeholders. |
 | `preview/` | Static HTML preview cards for the Design System tab (one card per concept). |
-| `ui_kits/zepto-app/` | Hi-fi recreation of the Zepto consumer app — JSX components + `index.html`. |
 | `SKILL.md` | Skill manifest so this folder works as a portable Claude Skill. |
 
 ---
@@ -278,8 +277,6 @@ weights for every name) and is consumed by:
 
 - `storybook-app/src/components/Icon.tsx` — typed `<Icon name weight size />`
   primitive. `IconName` and `Weight` are exported types.
-- `ui_kits/zepto-app/icons.jsx` — same component on `window.Icon`, plus
-  back-compat `I.*` shims for legacy call sites (`I.Home`, `I.Cart`, etc.).
 
 ### Weights
 
@@ -324,8 +321,7 @@ decorative emoji.
 2. Add the new name to the `NAMES` array in
    `scripts/build-icons.mjs` (or re-run the same logic — it's a small loop:
    read each weight's SVG, extract inner body, save to `icons-data.json`).
-3. Re-emit `storybook-app/src/components/Icon.tsx` and
-   `ui_kits/zepto-app/icons.jsx` so both surfaces pick up the new entry.
+3. Re-emit `storybook-app/src/components/Icon.tsx` so it picks up the new entry.
 
 The `IconName` union in `Icon.tsx` is the type-checked source of truth — if
 you forget step 3, TypeScript will complain at the call site.

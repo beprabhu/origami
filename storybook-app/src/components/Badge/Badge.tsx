@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import styles from './Badge.module.css';
+import './Badge.css';
 
 export type BadgeTone =
   | 'brand'
@@ -43,18 +43,15 @@ export function Badge({
   children,
   ...rest
 }: BadgeProps) {
-  const variantClass =
-    variant === 'solid'
-      ? styles[tone]
-      : variant === 'subtle'
-        ? styles[`${tone}Subtle` as keyof typeof styles]
-        : `${styles.outline} ${styles[tone]}`;
+  const toneClass =
+    variant === 'subtle' ? `zd-badge--${tone}Subtle` : `zd-badge--${tone}`;
 
   const cls = [
-    styles.badge,
-    styles[size],
-    variantClass,
-    uppercase && styles.uppercase,
+    'zd-badge',
+    `zd-badge--${size}`,
+    variant === 'outline' && 'zd-badge--outline',
+    toneClass,
+    uppercase && 'zd-badge--uppercase',
     className,
   ]
     .filter(Boolean)

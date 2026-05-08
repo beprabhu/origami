@@ -1,0 +1,73 @@
+/* Origami Header — sticky top app header. */
+
+.zd-header {
+  background: var(--zd-surface);
+  padding: 12px 16px 10px;
+  border-bottom: 1px solid var(--zd-border);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  font-family: var(--zd-font-sans);
+}
+
+.zd-header__eta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.zd-header__bolt {
+  color: var(--zd-brand);
+}
+
+.zd-header__label {
+  font-size: var(--zd-h16-size);
+  line-height: var(--zd-h16-lh);
+  font-weight: var(--zd-fw-bold);
+  color: var(--zd-text-primary);
+}
+
+.zd-header__address {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--zd-text-secondary);
+  margin-bottom: 10px;
+  font-size: var(--zd-b12-size);
+  line-height: var(--zd-b12-lh);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.zd-header__address strong {
+  text-transform: uppercase;
+  font-weight: var(--zd-fw-demi);
+  letter-spacing: 0.4px;
+  color: var(--zd-text-secondary);
+}
+
+.zd-header__search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--zd-surface-secondary);
+  border: 1px solid var(--zd-border-default);
+  border-radius: var(--zd-input-radius);
+  height: var(--zd-input-h);
+  padding: 0 var(--zd-input-px);
+  cursor: pointer;
+  color: var(--zd-text-tertiary);
+  font-family: inherit;
+  font-size: var(--zd-input-text-size);
+  line-height: var(--zd-input-text-lh);
+  text-align: left;
+}
+
+.zd-header__search:hover {
+  border-color: var(--zd-border-medium);
+}

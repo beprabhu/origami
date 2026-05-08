@@ -1,0 +1,97 @@
+/* Origami Input — single source consumed by Storybook AND preview/inputs.html. */
+
+.zd-input-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--zd-space-2);
+  font-family: var(--zd-font-sans);
+}
+
+.zd-input__label {
+  font-size: var(--zd-b12-size);
+  line-height: var(--zd-b12-lh);
+  font-weight: var(--zd-fw-demi);
+  color: var(--zd-text-primary);
+}
+
+.zd-input__required {
+  color: var(--zd-text-error-bold);
+  margin-left: 2px;
+}
+
+.zd-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--zd-input-h);
+  background: var(--zd-surface);
+  border: 1px solid var(--zd-border);
+  border-radius: var(--zd-input-radius);
+  transition:
+    border-color var(--zd-dur-fast) var(--zd-ease-standard),
+    box-shadow var(--zd-dur-fast) var(--zd-ease-standard);
+}
+
+.zd-input:hover:not(.zd-input--disabled) {
+  border-color: var(--zd-border-medium);
+}
+
+.zd-input--focused {
+  border-color: var(--zd-brand);
+  box-shadow: 0 0 0 3px var(--zd-brand-subtle);
+}
+
+.zd-input--error {
+  border-color: var(--zd-border-error);
+}
+.zd-input--error.zd-input--focused {
+  box-shadow: 0 0 0 3px var(--zd-surface-error-subtle);
+}
+
+.zd-input--disabled {
+  background: var(--zd-surface-secondary);
+  cursor: not-allowed;
+}
+
+.zd-input__control {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 100%;
+  padding: 0 var(--zd-input-px);
+  font-family: inherit;
+  font-size: var(--zd-input-text-size);
+  line-height: var(--zd-input-text-lh);
+  color: var(--zd-text-primary);
+  min-width: 0;
+}
+
+.zd-input__control::placeholder {
+  color: var(--zd-text-tertiary);
+}
+
+.zd-input__control:disabled {
+  cursor: not-allowed;
+  color: var(--zd-text-disabled);
+}
+
+.zd-input__affix {
+  display: flex;
+  align-items: center;
+  color: var(--zd-text-tertiary);
+  padding: 0 var(--zd-input-px);
+}
+
+.zd-input__affix--left { padding-right: 0; }
+.zd-input__affix--right { padding-left: 0; }
+
+.zd-input__helper {
+  font-size: var(--zd-b12-size);
+  line-height: var(--zd-b12-lh);
+  color: var(--zd-text-secondary);
+}
+
+.zd-input__helper--error {
+  color: var(--zd-text-error-bold);
+}

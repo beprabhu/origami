@@ -5,34 +5,20 @@ import {
   type InputHTMLAttributes,
   type ReactNode,
 } from 'react';
-import styles from './Input.module.css';
+import './Input.css';
 
 export type InputSize = 'sm' | 'md' | 'lg';
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** Label rendered above the input. Omit for unlabeled fields (use `aria-label`). */
   label?: string;
-  /** Helper text below the input. Becomes error text if `error` is true. */
   helper?: string;
-  /** Switches helper text + border into the error palette. */
   error?: boolean;
-  /** Marks the field as required and renders a red asterisk after the label. */
   required?: boolean;
-  /** Vertical density. */
   size?: InputSize;
-  /** Element rendered inside the input on the left. Common: search icon. */
   leftAddon?: ReactNode;
-  /** Element rendered inside the input on the right. Common: clear button, unit. */
   rightAddon?: ReactNode;
 }
 
-/**
- * Origami text input.
- *
- * Mirrors Zepto's product input field — quiet 1-px border, brand-pink focus ring,
- * inline left/right addons for icons or units. The `error` prop is the only
- * way to surface the error palette; we don't recolor based on `aria-invalid`.
- */
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   {
     label,
@@ -57,25 +43,25 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   const [focused, setFocused] = useState(false);
 
   const wrapperCls = [
-    styles.wrapper,
-    styles[size],
-    focused && styles.focused,
-    error && styles.error,
-    disabled && styles.disabled,
+    'zd-input',
+    `zd-input--${size}`,
+    focused && 'zd-input--focused',
+    error && 'zd-input--error',
+    disabled && 'zd-input--disabled',
   ]
     .filter(Boolean)
     .join(' ');
 
   return (
-    <div className={[styles.field, className].filter(Boolean).join(' ')}>
+    <div className={['zd-input-field', className].filter(Boolean).join(' ')}>
       {label && (
-        <label htmlFor={id} className={styles.label}>
+        <label htmlFor={id} className="zd-input__label">
           {label}
-          {required && <span className={styles.required} aria-hidden>*</span>}
+          {required && <span className="zd-input__required" aria-hidden>*</span>}
         </label>
       )}
       <div className={wrapperCls}>
-        {leftAddon && <span className={`${styles.affix} ${styles.leftAffix}`}>{leftAddon}</span>}
+        {leftAddon && <span className="zd-input__affix zd-input__affix--left">{leftAddon}</span>}
         <input
           {...rest}
           id={id}
@@ -84,7 +70,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           required={required}
           aria-invalid={error || undefined}
           aria-describedby={helperId}
-          className={styles.input}
+          className="zd-input__control"
           onFocus={(e) => {
             setFocused(true);
             onFocus?.(e);
@@ -94,12 +80,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
             onBlur?.(e);
           }}
         />
-        {rightAddon && <span className={`${styles.affix} ${styles.rightAffix}`}>{rightAddon}</span>}
+        {rightAddon && <span className="zd-input__affix zd-input__affix--right">{rightAddon}</span>}
       </div>
       {helper && (
         <span
           id={helperId}
-          className={[styles.helper, error && styles.errorText].filter(Boolean).join(' ')}
+          className={['zd-input__helper', error && 'zd-input__helper--error'].filter(Boolean).join(' ')}
         >
           {helper}
         </span>

@@ -9,7 +9,7 @@
  * (used most prominently across consumer UI: CTAs, prices, urgency).
  *
  * Usage: import this file once at app entry.
- *   @import url("./colors_and_type.css");
+ *   @import url("./tokens.css");
  */
 
 /* —— Web fonts (Zepto Norms) —— */

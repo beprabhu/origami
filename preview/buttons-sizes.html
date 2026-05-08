@@ -1,25 +1,30 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css"><style>
-body{margin:0;padding:24px;background:#fff;font-family:var(--zd-font-sans)}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  background:var(--zd-btn-primary-default-bg);color:var(--zd-btn-primary-default-text);border:1px solid var(--zd-btn-primary-default-bg);
-  font-family:var(--zd-font-sans);font-weight:var(--zd-fw-demi);cursor:pointer;
-}
-.btn.xxs{height:var(--zd-btn-h-xxs);padding:0 var(--zd-btn-px-xxs);font-size:var(--zd-btn-text-xxs-size);line-height:var(--zd-btn-text-xxs-lh);letter-spacing:var(--zd-a12-tracking);border-radius:var(--zd-btn-r-xxs)}
-.btn.xs{height:var(--zd-btn-h-xs);padding:0 var(--zd-btn-px-xs);font-size:var(--zd-btn-text-xs-size);line-height:var(--zd-btn-text-xs-lh);letter-spacing:var(--zd-a12-tracking);border-radius:var(--zd-btn-r-xs)}
-.btn.sm{height:var(--zd-btn-h-sm);padding:0 var(--zd-btn-px-sm);font-size:var(--zd-btn-text-sm-size);line-height:var(--zd-btn-text-sm-lh);letter-spacing:var(--zd-a12-tracking);border-radius:var(--zd-btn-r-sm)}
-.btn.md{height:var(--zd-btn-h-md);padding:0 var(--zd-btn-px-md);font-size:var(--zd-btn-text-md-size);line-height:var(--zd-btn-text-md-lh);letter-spacing:var(--zd-a14-tracking);border-radius:var(--zd-btn-r-md)}
-.btn.lg{height:var(--zd-btn-h-lg);padding:0 var(--zd-btn-px-lg);font-size:var(--zd-btn-text-lg-size);line-height:var(--zd-btn-text-lg-lh);letter-spacing:var(--zd-a16-tracking);border-radius:var(--zd-btn-r-lg)}
-.btn.xl{height:var(--zd-btn-h-xl);padding:0 var(--zd-btn-px-xl);font-size:var(--zd-btn-text-xl-size);line-height:var(--zd-btn-text-xl-lh);letter-spacing:var(--zd-a16-tracking);border-radius:var(--zd-btn-r-xl)}
-.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.tag{font-size:var(--zd-b10-size);line-height:var(--zd-b10-lh);color:var(--zd-text-tertiary);margin-top:6px;text-align:center;font-variant-numeric:tabular-nums}
-</style></head><body>
-<div class="row">
-  <div><button class="btn xxs">XXS</button><div class="tag">24 · A12</div></div>
-  <div><button class="btn xs">XS</button><div class="tag">28 · A12</div></div>
-  <div><button class="btn sm">SM</button><div class="tag">32 · A12</div></div>
-  <div><button class="btn md">MD</button><div class="tag">40 · A14</div></div>
-  <div><button class="btn lg">LG</button><div class="tag">48 · A16</div></div>
-  <div><button class="btn xl">XL</button><div class="tag">56 · A16</div></div>
-</div>
-</body></html>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../storybook-app/src/styles/tokens.css">
+<link rel="stylesheet" href="../storybook-app/src/components/Button/Button.css">
+<style>
+  body { margin: 0; padding: 24px; background: #fff; font-family: var(--zd-font-sans); }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .tag {
+    font-size: var(--zd-b10-size);
+    line-height: var(--zd-b10-lh);
+    color: var(--zd-text-tertiary);
+    margin-top: 6px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div><button class="zd-btn zd-btn--primary zd-btn--xxs">XXS</button><div class="tag">24 · A12</div></div>
+    <div><button class="zd-btn zd-btn--primary zd-btn--xs">XS</button><div class="tag">28 · A12</div></div>
+    <div><button class="zd-btn zd-btn--primary zd-btn--sm">SM</button><div class="tag">32 · A12</div></div>
+    <div><button class="zd-btn zd-btn--primary zd-btn--md">MD</button><div class="tag">40 · A14</div></div>
+    <div><button class="zd-btn zd-btn--primary zd-btn--lg">LG</button><div class="tag">48 · A16</div></div>
+    <div><button class="zd-btn zd-btn--primary zd-btn--xl">XL</button><div class="tag">56 · A16</div></div>
+  </div>
+</body>
+</html>

@@ -40,7 +40,7 @@ const preview: Preview = {
           'Foundations',
           ['Tokens', 'Colors', 'Typography', 'Spacing', 'Radii', 'Elevation'],
           'Components',
-          ['Button', 'Input', 'Badge', 'ProductCard', 'ProductGrid'],
+          ['Button', 'Input', 'Badge', 'ProductCard'],
           'App Shell',
           ['Header', 'BottomTabBar'],
         ],

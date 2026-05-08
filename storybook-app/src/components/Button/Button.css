@@ -1,0 +1,208 @@
+/* Origami Button — single source consumed by Storybook AND preview/buttons-*.html.
+ * Class names are global; all prefixed `.zd-btn`. Variants pull from --zd-btn-* tokens. */
+
+.zd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zd-space-2);
+  font-family: var(--zd-font-sans);
+  font-weight: var(--zd-fw-demi);
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+  transition:
+    background-color var(--zd-dur-fast) var(--zd-ease-standard),
+    border-color var(--zd-dur-fast) var(--zd-ease-standard),
+    color var(--zd-dur-fast) var(--zd-ease-standard);
+  white-space: nowrap;
+  user-select: none;
+  text-decoration: none;
+}
+
+.zd-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--zd-focus-ring);
+}
+
+/* ───── Variants ───── */
+.zd-btn--primary {
+  background: var(--zd-btn-primary-default-bg);
+  color: var(--zd-btn-primary-default-text);
+  border-color: var(--zd-btn-primary-default-bg);
+}
+.zd-btn--primary:not(:disabled):hover,
+.zd-btn--primary:not(:disabled):active {
+  background: var(--zd-btn-primary-pressed-bg);
+  border-color: var(--zd-btn-primary-pressed-bg);
+  color: var(--zd-btn-primary-pressed-text);
+}
+.zd-btn--primary:disabled,
+.zd-btn--primary[aria-disabled='true'] {
+  background: var(--zd-btn-primary-disabled-bg);
+  color: var(--zd-btn-primary-disabled-text);
+  border-color: var(--zd-btn-primary-disabled-bg);
+  cursor: not-allowed;
+}
+
+.zd-btn--secondary {
+  background: var(--zd-btn-secondary-default-bg);
+  color: var(--zd-btn-secondary-default-text);
+  border-color: var(--zd-btn-secondary-default-border);
+}
+.zd-btn--secondary:not(:disabled):hover,
+.zd-btn--secondary:not(:disabled):active {
+  background: var(--zd-btn-secondary-pressed-bg);
+  color: var(--zd-btn-secondary-pressed-text);
+  border-color: var(--zd-btn-secondary-pressed-border);
+}
+.zd-btn--secondary:disabled,
+.zd-btn--secondary[aria-disabled='true'] {
+  background: var(--zd-btn-secondary-disabled-bg);
+  color: var(--zd-btn-secondary-disabled-text);
+  border-color: var(--zd-btn-secondary-disabled-border);
+  cursor: not-allowed;
+}
+
+.zd-btn--tertiary {
+  background: var(--zd-btn-tertiary-default-bg);
+  color: var(--zd-btn-tertiary-default-text);
+  border-color: var(--zd-btn-tertiary-default-bg);
+}
+.zd-btn--tertiary:not(:disabled):hover,
+.zd-btn--tertiary:not(:disabled):active {
+  background: var(--zd-btn-tertiary-pressed-bg);
+  border-color: var(--zd-btn-tertiary-pressed-bg);
+  color: var(--zd-btn-tertiary-pressed-text);
+}
+.zd-btn--tertiary:disabled,
+.zd-btn--tertiary[aria-disabled='true'] {
+  background: var(--zd-btn-tertiary-disabled-bg);
+  color: var(--zd-btn-tertiary-disabled-text);
+  border-color: var(--zd-btn-tertiary-disabled-bg);
+  cursor: not-allowed;
+}
+
+.zd-btn--neutral {
+  background: var(--zd-btn-neutral-default-bg);
+  color: var(--zd-btn-neutral-default-text);
+  border-color: var(--zd-btn-neutral-default-border);
+}
+.zd-btn--neutral:not(:disabled):hover,
+.zd-btn--neutral:not(:disabled):active {
+  background: var(--zd-btn-neutral-pressed-bg);
+  color: var(--zd-btn-neutral-pressed-text);
+  border-color: var(--zd-btn-neutral-pressed-border);
+}
+.zd-btn--neutral:disabled,
+.zd-btn--neutral[aria-disabled='true'] {
+  background: var(--zd-btn-neutral-disabled-bg);
+  color: var(--zd-btn-neutral-disabled-text);
+  border-color: var(--zd-btn-neutral-disabled-border);
+  cursor: not-allowed;
+}
+
+.zd-btn--linkSecondary {
+  background: transparent;
+  border-color: transparent;
+  color: var(--zd-btn-link-secondary-default-text);
+  padding-left: 0;
+  padding-right: 0;
+}
+.zd-btn--linkSecondary:not(:disabled):hover,
+.zd-btn--linkSecondary:not(:disabled):active {
+  color: var(--zd-btn-link-secondary-pressed-text);
+  text-decoration: underline;
+}
+.zd-btn--linkSecondary:disabled,
+.zd-btn--linkSecondary[aria-disabled='true'] {
+  color: var(--zd-btn-link-secondary-disabled-text);
+  cursor: not-allowed;
+}
+
+.zd-btn--linkNeutral {
+  background: transparent;
+  border-color: transparent;
+  color: var(--zd-btn-link-neutral-default-text);
+  padding-left: 0;
+  padding-right: 0;
+}
+.zd-btn--linkNeutral:not(:disabled):hover,
+.zd-btn--linkNeutral:not(:disabled):active {
+  color: var(--zd-btn-link-neutral-pressed-text);
+  text-decoration: underline;
+}
+.zd-btn--linkNeutral:disabled,
+.zd-btn--linkNeutral[aria-disabled='true'] {
+  color: var(--zd-btn-link-neutral-disabled-text);
+  cursor: not-allowed;
+}
+
+.zd-btn--superSaver {
+  background: var(--zd-btn-super-saver-default-bg);
+  color: var(--zd-btn-super-saver-default-text);
+  border-color: var(--zd-btn-super-saver-default-bg);
+}
+.zd-btn--superSaver:not(:disabled):hover,
+.zd-btn--superSaver:not(:disabled):active {
+  background: var(--zd-btn-super-saver-pressed-bg);
+  color: var(--zd-btn-super-saver-pressed-text);
+  border-color: var(--zd-btn-super-saver-pressed-bg);
+}
+.zd-btn--superSaver:disabled,
+.zd-btn--superSaver[aria-disabled='true'] {
+  background: var(--zd-btn-super-saver-disabled-bg);
+  color: var(--zd-btn-super-saver-disabled-text);
+  border-color: var(--zd-btn-super-saver-disabled-bg);
+  cursor: not-allowed;
+}
+
+.zd-btn--superSaverOutline {
+  background: var(--zd-btn-super-saver-outline-default-bg);
+  color: var(--zd-btn-super-saver-outline-default-text);
+  border-color: var(--zd-btn-super-saver-outline-default-border);
+}
+.zd-btn--superSaverOutline:not(:disabled):hover,
+.zd-btn--superSaverOutline:not(:disabled):active {
+  background: var(--zd-btn-super-saver-outline-pressed-bg);
+  color: var(--zd-btn-super-saver-outline-pressed-text);
+  border-color: var(--zd-btn-super-saver-outline-pressed-border);
+}
+.zd-btn--superSaverOutline:disabled,
+.zd-btn--superSaverOutline[aria-disabled='true'] {
+  background: var(--zd-btn-super-saver-outline-disabled-bg);
+  color: var(--zd-btn-super-saver-outline-disabled-text);
+  border-color: var(--zd-btn-super-saver-outline-disabled-border);
+  cursor: not-allowed;
+}
+
+/* ───── Sizes ───── */
+.zd-btn--xxs { height: var(--zd-btn-h-xxs); padding: 0 var(--zd-btn-px-xxs); font-size: var(--zd-btn-text-xxs-size); line-height: var(--zd-btn-text-xxs-lh); letter-spacing: var(--zd-a12-tracking); border-radius: var(--zd-btn-r-xxs); }
+.zd-btn--xs  { height: var(--zd-btn-h-xs);  padding: 0 var(--zd-btn-px-xs);  font-size: var(--zd-btn-text-xs-size);  line-height: var(--zd-btn-text-xs-lh);  letter-spacing: var(--zd-a12-tracking); border-radius: var(--zd-btn-r-xs); }
+.zd-btn--sm  { height: var(--zd-btn-h-sm);  padding: 0 var(--zd-btn-px-sm);  font-size: var(--zd-btn-text-sm-size);  line-height: var(--zd-btn-text-sm-lh);  letter-spacing: var(--zd-a12-tracking); border-radius: var(--zd-btn-r-sm); }
+.zd-btn--md  { height: var(--zd-btn-h-md);  padding: 0 var(--zd-btn-px-md);  font-size: var(--zd-btn-text-md-size);  line-height: var(--zd-btn-text-md-lh);  letter-spacing: var(--zd-a14-tracking); border-radius: var(--zd-btn-r-md); }
+.zd-btn--lg  { height: var(--zd-btn-h-lg);  padding: 0 var(--zd-btn-px-lg);  font-size: var(--zd-btn-text-lg-size);  line-height: var(--zd-btn-text-lg-lh);  letter-spacing: var(--zd-a16-tracking); border-radius: var(--zd-btn-r-lg); }
+.zd-btn--xl  { height: var(--zd-btn-h-xl);  padding: 0 var(--zd-btn-px-xl);  font-size: var(--zd-btn-text-xl-size);  line-height: var(--zd-btn-text-xl-lh);  letter-spacing: var(--zd-a16-tracking); border-radius: var(--zd-btn-r-xl); }
+
+.zd-btn--linkSecondary,
+.zd-btn--linkNeutral { height: auto; border-radius: 0; }
+
+.zd-btn--fullWidth { width: 100%; }
+.zd-btn--loading   { pointer-events: none; opacity: 0.85; }
+
+.zd-btn__spinner {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  animation: zd-btn-spin 600ms linear infinite;
+  display: inline-block;
+}
+@keyframes zd-btn-spin { to { transform: rotate(360deg); } }
+
+.zd-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

@@ -1,232 +1,163 @@
-import type { ReactNode } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
+import { Badge } from '../Badge';
+import { Button } from '../Button';
 import { Icon } from '../Icon';
-import styles from './ProductCard.module.css';
+import './ProductCard.css';
 
-export interface Product {
-  /** Stable id (used as React key + handler payload). */
-  id: string;
-  /** Display name (1–2 lines, clamped). */
-  name: string;
-  /** Quantity label, e.g. "500 ml", "1 kg". */
-  qty: string;
-  /** Optional unit-rate label, e.g. "₹54/L". */
-  unit_price?: string;
-  /** Selling price (rupees, integer). */
+export interface ProductCardProps extends HTMLAttributes<HTMLElement> {
+  /** Product title — clamped to 2 lines. */
+  title: string;
+  /** Discounted/selling price in rupees. Rendered inside the green Super Saver chip. */
   price: number;
-  /** Optional MRP for strike-through + savings calc. */
+  /** MRP (struck-out reference price). Omit if there's no discount. */
   mrp?: number;
-  /** Optional info-label text shown top-left of the image (e.g. "Best Value"). */
-  flag?: string;
-  /** Attribute chips below the title (e.g. ["1 kg", "Pack of 6"]). */
-  attrs?: string[];
-  /** Star rating value (e.g. 4.6). */
+  /** Pre-computed savings string e.g. "₹24 OFF". Omit to hide the savings row. */
+  savingsLabel?: string;
+  /** Top-left ribbon pill text (e.g. "Best Value"). Omit to hide. */
+  ribbon?: string;
+  /** Quantity-in-pack label, top-of-quantity-strip (e.g. "84 pcs"). */
+  packCount?: string;
+  /** Per-unit rate label (e.g. "₹7.5/ pc"). */
+  unitRate?: string;
+  /** Square product image URL. If omitted, a placeholder is shown. */
+  imageUrl?: string;
+  imageAlt?: string;
+  /** Lightweight attribute chips below the title (size, weight, …). */
+  tags?: string[];
+  /** Average rating, e.g. 4.5. */
   rating?: number;
-  /** Display string for review count (e.g. "2.3k"). */
-  rating_count?: string | number;
-  /** Image URL. If absent, a colored placeholder is rendered. */
-  image?: string;
-  /** Hint for the placeholder swatch when no image is provided. */
-  tone?: PlaceholderTone;
-}
-
-export type PlaceholderTone =
-  | 'milk'
-  | 'banana'
-  | 'noodles'
-  | 'apple'
-  | 'egg'
-  | 'chips'
-  | 'bread'
-  | 'cola'
-  | 'soap'
-  | 'rice'
-  | 'diaper';
-
-// NOTE: these are illustration tones for sample placeholder images
-// (not semantic brand colors). They live local to this component
-// because they are NOT referenced anywhere in the canonical token JSON.
-const TONES: Record<PlaceholderTone, [string, string]> = {
-  milk: ['#e8f4fb', '#bcd9ec'],
-  banana: ['#fff7d6', '#f0d96a'],
-  noodles: ['#fde8d3', '#e8a35a'],
-  apple: ['#ffe0e0', '#e88080'],
-  egg: ['#fff8e8', '#e8c870'],
-  chips: ['#f0e8ff', '#a890d8'],
-  bread: ['#fbf1da', '#d4a96a'],
-  cola: ['#dde6f5', '#5b6fa3'],
-  soap: ['#e3f3ed', '#7bc0a3'],
-  rice: ['#fff5e3', '#dfb070'],
-  diaper: ['#fef0f5', '#f9b9d0'],
-};
-
-function Placeholder({ tone = 'milk' }: { tone?: PlaceholderTone }) {
-  const [bg, dot] = TONES[tone] ?? TONES.milk;
-  return (
-    <div className={styles.placeholder} style={{ background: bg }}>
-      <div className={styles.dot} style={{ background: dot }} />
-    </div>
-  );
-}
-
-function HeartIcon() {
-  return (
-    <Icon
-      name="heart"
-      size={14}
-      style={{ color: 'var(--zd-icon-on-surface-bold)', filter: 'drop-shadow(0 0 0.5px var(--zd-border-medium))' }}
-    />
-  );
-}
-
-function StarIcon() {
-  return <Icon name="star" weight="fill" size={10} style={{ color: 'var(--zd-icon-success-bold)' }} />;
-}
-
-export interface ProductCardProps {
-  /** The product to display. */
-  product: Product;
-  /** Current cart quantity. `0` shows ADD; `> 0` shows the stepper. */
-  qty?: number;
-  /** ADD button click handler. */
+  /** Number of reviews. */
+  ratingCount?: number;
+  /** Wishlist state. */
+  favorited?: boolean;
+  onToggleFavorite?: () => void;
+  /** Add-to-cart click. */
   onAdd?: () => void;
-  /** Stepper increment handler. */
-  onInc?: () => void;
-  /** Stepper decrement handler. */
-  onDec?: () => void;
-  /** Card-body tap handler — typically opens the PDP. */
-  onTap?: () => void;
-  /**
-   * Render-prop slot for the image. If supplied, takes precedence over
-   * `product.image` (lets you wire in `next/image`, lazy loaders, etc.).
-   */
-  renderImage?: (product: Product) => ReactNode;
+  /** Replace the floating ADD button with custom node (e.g. a stepper). */
+  addSlot?: ReactNode;
 }
 
 /**
- * Origami M-Product Card — Zepto's hero product tile.
- *
- * Faithful port of `MProductCardExp.tsx`: stamp price block with offset shadow,
- * dashed savings divider, asymmetric info label, attribute tags, gradient
- * rating pill, ADD → stepper transition. All values resolved from design tokens.
+ * Origami ProductCard — the canonical 156-wide product tile.
+ * Composes the design system's Badge (tags + ribbon) and Button (ADD)
+ * primitives. All colors and type are sourced from `tokens.css`.
  */
 export function ProductCard({
-  product,
-  qty = 0,
+  title,
+  price,
+  mrp,
+  savingsLabel,
+  ribbon,
+  packCount,
+  unitRate,
+  imageUrl,
+  imageAlt = '',
+  tags,
+  rating,
+  ratingCount,
+  favorited = false,
+  onToggleFavorite,
   onAdd,
-  onInc,
-  onDec,
-  onTap,
-  renderImage,
+  addSlot,
+  className,
+  ...rest
 }: ProductCardProps) {
-  const savings = product.mrp ? product.mrp - product.price : 0;
-  const stop = (e: React.MouseEvent) => e.stopPropagation();
-
-  const image = renderImage
-    ? renderImage(product)
-    : product.image
-      ? <img src={product.image} alt={product.name} />
-      : <Placeholder tone={product.tone} />;
-
   return (
-    <div className={styles.card} onClick={onTap}>
-      {/* ─── Header ─── */}
-      <div className={styles.header}>
-        <div className={styles.imageBox}>{image}</div>
+    <article className={['zd-pcard', className].filter(Boolean).join(' ')} {...rest}>
+      {/* ── Header (image frame) ── */}
+      <div className="zd-pcard__header">
+        {ribbon && (
+          <span className="zd-pcard__pill">
+            <Badge tone="warning" variant="subtle" size="sm" uppercase={false}>
+              {ribbon}
+            </Badge>
+          </span>
+        )}
 
-        <div className={styles.heart}>
-          <HeartIcon />
-        </div>
+        <button
+          type="button"
+          className={[
+            'zd-pcard__heart',
+            favorited && 'zd-pcard__heart--active',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          aria-label={favorited ? 'Remove from wishlist' : 'Add to wishlist'}
+          aria-pressed={favorited}
+          onClick={onToggleFavorite}
+        >
+          <Icon name="heart" weight={favorited ? 'fill' : 'bold'} size={14} />
+        </button>
 
-        {product.flag && <div className={styles.infoLabel}>{product.flag}</div>}
-
-        <div className={styles.qtyRow}>
-          <span className={styles.qty}>{product.qty}</span>
-          {product.unit_price && (
-            <span className={styles.unitPrice}>{product.unit_price}</span>
+        <div className="zd-pcard__image">
+          {imageUrl ? (
+            <img src={imageUrl} alt={imageAlt} />
+          ) : (
+            <div className="zd-pcard__image-placeholder" aria-hidden>
+              <Icon name="package" weight="regular" size={32} />
+            </div>
           )}
         </div>
 
-        {qty === 0 ? (
-          <div className={styles.addBtn}>
-            <button
-              type="button"
-              onClick={(e) => {
-                stop(e);
-                onAdd?.();
-              }}
-              aria-label={`Add ${product.name} to cart`}
-            >
-              ADD
-            </button>
-          </div>
-        ) : (
-          <div className={styles.stepper}>
-            <div>
-              <button
-                type="button"
-                onClick={(e) => {
-                  stop(e);
-                  onDec?.();
-                }}
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-              <span className={styles.qtyValue}>{qty}</span>
-              <button
-                type="button"
-                onClick={(e) => {
-                  stop(e);
-                  onInc?.();
-                }}
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-            </div>
+        {(packCount || unitRate) && (
+          <div className="zd-pcard__quantity">
+            {packCount && <span className="zd-pcard__quantity-count">{packCount}</span>}
+            {unitRate && <span className="zd-pcard__quantity-rate">{unitRate}</span>}
           </div>
         )}
+
+        <div className="zd-pcard__add">
+          {addSlot ?? (
+            <Button variant="secondary" size="sm" onClick={onAdd}>
+              ADD
+            </Button>
+          )}
+        </div>
       </div>
 
-      {/* ─── Body ─── */}
-      <div className={styles.body}>
-        <div className={styles.priceRow}>
-          <div className={styles.stamp}>
-            <span className={styles.currency}>₹</span>
-            <span className={styles.priceValue}>{product.price}</span>
-          </div>
-          {product.mrp && <span className={styles.mrp}>₹{product.mrp}</span>}
+      {/* ── Body ── */}
+      <div className="zd-pcard__body">
+        <div className="zd-pcard__price">
+          <span className="zd-pcard__sp" aria-label={`Price ₹${price}`}>
+            <span className="zd-pcard__sp-rupee">₹</span>
+            <span className="zd-pcard__sp-amount">{price}</span>
+          </span>
+          {typeof mrp === 'number' && (
+            <span className="zd-pcard__mrp" aria-label={`MRP ₹${mrp}`}>₹{mrp}</span>
+          )}
         </div>
 
-        {savings > 0 && (
-          <div className={styles.savings}>
-            <span className={styles.savingsValue}>₹{savings} OFF</span>
-            <div className={styles.divider} />
+        {savingsLabel && (
+          <div className="zd-pcard__savings">
+            <span className="zd-pcard__savings-amount">{savingsLabel}</span>
+            <span className="zd-pcard__savings-divider" aria-hidden />
           </div>
         )}
 
-        <p className={styles.name}>{product.name}</p>
+        <h3 className="zd-pcard__title" title={title}>{title}</h3>
 
-        {product.attrs && product.attrs.length > 0 && (
-          <div className={styles.attrs}>
-            {product.attrs.map((a) => (
-              <div key={a} className={styles.attrTag}>
-                {a}
-              </div>
+        {tags && tags.length > 0 && (
+          <div className="zd-pcard__tags">
+            {tags.map((t) => (
+              <Badge key={t} tone="neutral" variant="subtle" size="sm" uppercase={false}>
+                {t}
+              </Badge>
             ))}
           </div>
         )}
 
-        {product.rating !== undefined && (
-          <div className={styles.rating}>
-            <StarIcon />
-            <span className={styles.ratingValue}>{product.rating}</span>
-            <span className={styles.ratingCount}>
-              ({product.rating_count ?? 100})
+        {typeof rating === 'number' && (
+          <div className="zd-pcard__rating">
+            <span className="zd-pcard__rating-star" aria-hidden>
+              <Icon name="star" weight="fill" size={12} />
             </span>
+            <span className="zd-pcard__rating-score">{rating}</span>
+            {typeof ratingCount === 'number' && (
+              <span className="zd-pcard__rating-count">({ratingCount.toLocaleString()})</span>
+            )}
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 }

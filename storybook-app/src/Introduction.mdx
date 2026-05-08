@@ -15,7 +15,7 @@ palette can be re-skinned at runtime by overriding tokens on `:root`.
 ## What's in here
 
 - **Foundations** — color ramps, semantic tokens, type scale, spacing, radii, and elevation.
-- **Components** — `Button`, `Input`, `Badge`, `ProductCard`, `ProductGrid`.
+- **Components** — `Button`, `Input`, `Badge`.
 - **App Shell** — `Header`, `BottomTabBar`. Drop these straight into any Zepto-flavoured
   surface; they encode the layout conventions used in production.
 
@@ -38,7 +38,7 @@ import 'origami/dist/styles.css';
 Then import components by name:
 
 ```tsx
-import { Button, ProductCard, Header } from 'origami';
+import { Button, Header } from 'origami';
 
 export function CartCTA() {
   return (

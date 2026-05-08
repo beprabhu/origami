@@ -1,10 +1,10 @@
 # Audit · Preview ↔ Storybook alignment
 
-> **Status:** as of this commit, all components consume the same component tokens defined in `colors_and_type.css`. No more inline pixel sizes.
+> **Status:** single source of truth established. `storybook-app/src/styles/tokens.css` is the only token file. Both Storybook and `preview/*.html` link it directly via relative path. Edits propagate to both surfaces with no copy step.
 
 ## What was drifting
 
-Both the standalone preview cards (`preview/*.html`) and the Storybook components (`storybook-app/src/components/*`) used to hardcode their own font sizes, heights, and radii. The token file `colors_and_type.css` was identical in both copies, but components weren't consuming it — so any change to a token didn't ripple, and the same nominal "A14 / 600" rendered at three different sizes depending on which file you opened.
+Both the standalone preview cards (`preview/*.html`) and the Storybook components (`storybook-app/src/components/*`) used to hardcode their own font sizes, heights, and radii. Until recently the token file was even duplicated as `colors_and_type.css` (root) **and** `storybook-app/src/styles/tokens.css` (Storybook copy), kept in sync by a manual `cp`. That copy is now gone — there is only `tokens.css`.
 
 Concrete drift before this audit:
 
@@ -25,7 +25,7 @@ Concrete drift before this audit:
 
 ## Single source of truth
 
-All these now resolve from named tokens in `colors_and_type.css` (and its mirror at `storybook-app/src/styles/tokens.css`):
+All these now resolve from named tokens in `storybook-app/src/styles/tokens.css`:
 
 ```css
 /* Button sizes */
@@ -56,35 +56,37 @@ All these now resolve from named tokens in `colors_and_type.css` (and its mirror
 
 ## How to keep them in sync
 
-`colors_and_type.css` (project root) is the source. `storybook-app/src/styles/tokens.css` is a copy.
-After editing the source, run:
+There is nothing to sync. `storybook-app/src/styles/tokens.css` is the only token file.
 
-```bash
-cp colors_and_type.css storybook-app/src/styles/tokens.css
-```
+- Storybook imports it via `src/styles/global.css` (`@import './tokens.css'`).
+- Every `preview/*.html` links it with `<link rel="stylesheet" href="../storybook-app/src/styles/tokens.css">`.
 
-(or set up a symlink / a `cp` pre-script in `storybook-app/package.json`'s `dev`/`build`).
+Edit the file once — both surfaces reflect the change on reload.
 
 ## Files touched
 
 **Tokens**
-- `colors_and_type.css` — added Component-tokens block (Button / Input / Badge / micro text / Tab bar)
-- `storybook-app/src/styles/tokens.css` — copy of source
+- `storybook-app/src/styles/tokens.css` — the single source of truth (color, type, spacing, radius, motion, component tokens for Button / Input / Badge / micro text / Tab bar)
 
-**Storybook components**
-- `Button/Button.module.css` — sizes pull from `--zd-btn-*`; removed inline letter-spacing duplication
-- `Input/Input.module.css` — single height (44), token-driven; size classes are now no-ops kept for API compat
-- `Badge/Badge.module.css` — sizes pull from `--zd-badge-*`
-- `ProductCard/ProductCard.module.css` — ADD/stepper use `--zd-btn-h-sm` + A12; price stamp uses B12/B14; all 10/12 text now consumes `--zd-b10-*`; "Best Value" pill consumes `--zd-b8-*`
-- `Header/Header.module.css` — eta H16, address B12, search consumes `--zd-input-*`
-- `BottomTabBar/BottomTabBar.module.css` — label + dot consume tab-bar tokens
+**Storybook components — now plain CSS shared with previews**
+
+Each component renames its old `*.module.css` to a plain `*.css` with `zd-`-prefixed
+selectors, so both Storybook and the static preview HTMLs link the same file. No
+more inline-style duplication across the two surfaces.
+
+- `Button/Button.css` — sizes pull from `--zd-btn-*`; removed inline letter-spacing duplication
+- `Input/Input.css` — single height (44), token-driven; size classes are now no-ops kept for API compat
+- `Badge/Badge.css` — sizes pull from `--zd-badge-*`
+- `Header/Header.css` — eta H16, address B12, search consumes `--zd-input-*`
+- `BottomTabBar/BottomTabBar.css` — label + dot consume tab-bar tokens
+
+(`ProductCard` was later removed from Storybook entirely.)
 
 **Preview cards**
 - `preview/buttons-variants.html` — token-driven, 6 variants on MD baseline
 - `preview/buttons-sizes.html` — XXS → XL each annotated with its A-tier
 - `preview/inputs.html` — single 44h size from `--zd-input-*`
 - `preview/badges.html` — MD baseline pulls from `--zd-badge-*`, O10 text
-- `preview/product-cards.html` — same tokens as the Storybook ProductCard
 - (`preview/type-*.html` already consumed `.zd-a*` / `.zd-b*` / `.zd-h*` — unchanged)
 
 ## Open follow-ups (not part of this pass)
